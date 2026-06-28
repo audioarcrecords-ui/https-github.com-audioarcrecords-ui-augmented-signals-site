@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Augmented Signals — Glitch in time</title>
+<meta name="description" content="Augmented Signals — Glitch in time: a real-time glitch, stutter and texture processor for Windows. VST3 + Standalone." />
+<meta property="og:title" content="Augmented Signals — Glitch in time" />
+<meta property="og:description" content="A real-time glitch, stutter and texture processor. VST3 + Standalone." />
+<meta property="og:image" content="assets/plugin.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+
+<!-- ANALYTICS: paste ONE snippet here (see README). e.g. Cloudflare Web Analytics:
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+  data-cf-beacon='{"token":"YOUR_CF_TOKEN"}'></script> -->
+</head>
+<body>
+
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="scanlines" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header class="nav">
+  <a href="#top" class="brand"><span class="brand-mark">◈</span><span class="brand-name">AUGMENTED&nbsp;SIGNALS</span></a>
+  <nav class="nav-links">
+    <a href="#showcase">Plugin</a><a href="#download">Download</a><a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="top" class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">// BOUTIQUE AUDIO SOFTWARE</p>
+    <h1 class="glitch" data-text="GLITCH IN TIME">GLITCH IN TIME</h1>
+    <p class="hero-sub">Real-time glitch, stutter &amp; texture engine — VST3 · Standalone · Win64</p>
+    <div class="hero-cta">
+      <a href="#download" class="btn btn-primary">↓ Download Free</a>
+      <a href="#showcase" class="btn btn-ghost">See it</a>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWCASE: the real plugin, wrapped in dynamic FX -->
+<section id="showcase" class="showcase">
+  <div class="stage" id="stage">
+    <div class="plugin-frame" id="pluginFrame">
+      <div class="frame-glow"></div>
+      <img src="assets/plugin.png" alt="Glitch in time plugin interface" class="plugin-img" draggable="false" />
+      <img src="assets/plugin.png" alt="" aria-hidden="true" class="plugin-img gl gl-r" draggable="false" />
+      <img src="assets/plugin.png" alt="" aria-hidden="true" class="plugin-img gl gl-c" draggable="false" />
+      <div class="scan-beam"></div>
+      <div class="frame-corners"><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="stage-floor"></div>
+  </div>
+  <p class="stage-cap">▲ The real plugin. Move your cursor over it.</p>
+</section>
+
+<!-- FEATURES -->
+<section class="section">
+  <div class="section-head"><span class="sec-index">01</span><h2>Under the hood</h2><div class="sec-line"></div></div>
+  <ul class="feature-grid">
+    <li><b>6 glitch modes</b><span>Stutter · Crush · Modulator · Gater · Stretcher · Scatter</span></li>
+    <li><b>Tempo-synced</b><span>Lock the rate to 1/2 · 1/4 · 1/8 · 1/16 · 1/32</span></li>
+    <li><b>Metafilter</b><span>LP/HP/BP · LFO · envelope-follower auto-wah</span></li>
+    <li><b>Bit crusher</b><span>Clean 16-bit down to gritty ~1.5-bit</span></li>
+    <li><b>Grain delay</b><span>Granular delay — pitch, spray &amp; feedback</span></li>
+    <li><b>Spatial bands</b><span>4-band stereo-width + auto-panner</span></li>
+    <li><b>Full automation</b><span>Every knob automatable &amp; MIDI-mappable</span></li>
+    <li><b>MIDI trigger</b><span>Fire glitches &amp; play the buffer from notes</span></li>
+  </ul>
+</section>
+
+<!-- DOWNLOAD -->
+<section id="download" class="section">
+  <div class="section-head"><span class="sec-index">02</span><h2>Download</h2><div class="sec-line"></div></div>
+  <div class="download-box">
+    <div class="dl-info">
+      <h3>Glitch in time <span class="muted">v1.0.0 — Windows installer</span></h3>
+      <p class="muted">VST3 + Standalone · 64-bit · ~5&nbsp;MB · Windows 10/11</p>
+      <p class="dl-counter"><span class="dl-dot"></span><span id="dl-count">—</span> downloads &amp; counting</p>
+      <p class="dl-note">Unsigned installer — SmartScreen may warn on first run: <b>More info → Run anyway</b>.</p>
+    </div>
+    <a id="download-btn" class="btn btn-primary btn-lg"
+       href="https://github.com/audioarcrecords-ui/glitch-in-time/releases/latest"
+       data-plugin="glitch-in-time" rel="noopener">↓ Download Setup.exe</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="section-head"><span class="sec-index">03</span><h2>Contact &amp; Support</h2><div class="sec-line"></div></div>
+  <p class="contact-intro">Bug report, feature request, or just want to share what you made? Transmit a signal.</p>
+  <form id="contact-form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+    <input type="hidden" name="subject" value="New message from Augmented Signals site" />
+    <input type="checkbox" name="botcheck" style="display:none" aria-hidden="true" />
+    <div class="form-row">
+      <label>Name<input type="text" name="name" required placeholder="Your name" /></label>
+      <label>Email<input type="email" name="email" required placeholder="you@domain.com" /></label>
+    </div>
+    <label>Topic
+      <select name="topic"><option>Feedback</option><option>Bug report</option><option>Feature request</option><option>Support</option><option>Other</option></select>
+    </label>
+    <label>Message<textarea name="message" rows="5" required placeholder="Type your transmission…"></textarea></label>
+    <button type="submit" class="btn btn-primary btn-lg">Transmit ▸</button>
+    <p id="form-status" class="form-status" role="status"></p>
+  </form>
+</section>
+
+<footer class="footer">
+  <div class="footer-brand">◈ AUGMENTED SIGNALS</div>
+  <div class="footer-meta"><span class="muted">© <span id="year"></span> Augmented Signals</span></div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
