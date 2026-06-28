@@ -2,9 +2,6 @@
  *  Augmented Signals — site behaviour
  * ============================================================ */
 
-/* ---- config -------------------------------------------------- */
-const GITHUB_REPO = "audioarcrecords-ui/glitch-in-time"; // owner/repo for download counts
-
 /* ---- year ---------------------------------------------------- */
 document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -74,26 +71,9 @@ document.getElementById("year").textContent = new Date().getFullYear();
 })();
 
 /* ============================================================ *
- *  Live download counter (sums GitHub release asset downloads)
- * ============================================================ */
-(async () => {
-  const el = document.getElementById("dl-count");
-  if (!el) return;
-  try {
-    const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/releases`);
-    if (!res.ok) throw new Error("api");
-    const releases = await res.json();
-    let total = 0;
-    for (const r of releases)
-      for (const a of (r.assets || [])) total += a.download_count || 0;
-    el.textContent = total.toLocaleString();
-  } catch {
-    el.textContent = "—";
-  }
-})();
-
-/* ============================================================ *
  *  Download-click event (for your analytics provider)
+ *  The installer is hosted directly on the site; download counts
+ *  appear in your Cloudflare dashboard (requests to /downloads/).
  * ============================================================ */
 const dlBtn = document.getElementById("download-btn");
 if (dlBtn) {
