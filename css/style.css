@@ -197,6 +197,36 @@ h1,h2,h3{ font-family:"Orbitron", sans-serif; letter-spacing:.04em; }
   background:radial-gradient(ellipse at center, rgba(0,240,255,.22), transparent 70%); filter:blur(8px); }
 .stage-cap{ color:var(--text-dim); font-size:.74rem; letter-spacing:.14em; margin-top:14px; }
 
+/* ── STAGE DESCRIPTION ───────────────────────────────── */
+.stage-desc{
+  max-width:min(820px,94vw); margin-top:48px; text-align:center;
+}
+.stage-desc-title{
+  font-family:"Orbitron", sans-serif; font-weight:900;
+  font-size:clamp(1.6rem,5vw,2.8rem); line-height:1.15;
+  color:#eafaff; letter-spacing:.04em; margin-bottom:16px;
+}
+.stage-desc-accent{ color:var(--magenta); text-shadow:var(--glow-mag); }
+.stage-desc-lead{
+  font-family:"Orbitron", sans-serif; font-size:clamp(.9rem,2.2vw,1.15rem);
+  color:var(--cyan); letter-spacing:.06em; margin-bottom:22px;
+  text-shadow:var(--glow-cyan);
+}
+.stage-desc-body{
+  font-family:"Share Tech Mono", monospace; font-size:clamp(.88rem,1.8vw,1.02rem);
+  color:var(--text); line-height:1.75; margin-bottom:28px;
+  max-width:740px; margin-left:auto; margin-right:auto;
+}
+.stage-desc-tags{
+  display:flex; justify-content:center; gap:16px; flex-wrap:wrap;
+}
+.stage-desc-tags span{
+  font-family:"Orbitron", sans-serif; font-size:.72rem; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--cyan); border:1px solid var(--cyan);
+  border-radius:3px; padding:5px 14px;
+  box-shadow:var(--glow-cyan); opacity:.85;
+}
+
 /* ── DOWNLOAD ────────────────────────────────────────── */
 .download-box{
   display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap;
