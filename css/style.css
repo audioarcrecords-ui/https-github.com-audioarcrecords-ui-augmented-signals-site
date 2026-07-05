@@ -310,7 +310,7 @@ h1,h2,h3{ font-family:"Orbitron", sans-serif; letter-spacing:.04em; }
 /* VoidSynth showcase — mirrors .showcase but violet-tinted */
 .vs-showcase{ border-top:1px solid rgba(139,92,255,.15); }
 
-.vs-stage{ perspective:900px; width:min(1060px,96vw); }
+.vs-stage{ perspective:900px; width:min(1400px,99vw); }
 
 .vs-frame{
   position:relative;
