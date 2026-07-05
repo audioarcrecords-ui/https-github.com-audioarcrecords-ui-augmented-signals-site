@@ -307,31 +307,46 @@ h1,h2,h3{ font-family:"Orbitron", sans-serif; letter-spacing:.04em; }
 .vs-eyebrow{ color:var(--violet); }
 .vs-accent{ color:var(--violet); }
 
-/* VoidSynth showcase — mirrors .showcase but violet-tinted */
-.vs-showcase{ border-top:1px solid rgba(139,92,255,.15); }
+/* VoidSynth showcase — full-bleed layout */
+.vs-showcase{
+  border-top:1px solid rgba(139,92,255,.15);
+  padding:48px 0 0;
+}
 
-.vs-stage{ perspective:900px; width:min(1400px,99vw); }
+.vs-img-wrap{
+  width:100%;
+  padding:0 clamp(8px,1.5vw,20px);
+  perspective:1200px;
+}
 
 .vs-frame{
   position:relative;
   border:1px solid rgba(139,92,255,.35);
-  border-radius:6px;
+  border-radius:8px;
   overflow:hidden;
-  box-shadow:0 0 40px rgba(139,92,255,.2), 0 0 80px rgba(139,92,255,.08), inset 0 0 30px rgba(139,92,255,.05);
+  box-shadow:0 0 60px rgba(139,92,255,.25), 0 0 120px rgba(139,92,255,.1), inset 0 0 40px rgba(139,92,255,.06);
   transition:transform .12s ease;
+  width:100%;
 }
 .vs-glow{
   position:absolute; inset:0; pointer-events:none;
-  background:radial-gradient(ellipse at 50% 0%, rgba(139,92,255,.18) 0%, transparent 65%);
+  background:radial-gradient(ellipse at 50% 0%, rgba(139,92,255,.2) 0%, transparent 65%);
   z-index:1;
 }
 .vs-img{
-  width:100%; display:block; border-radius:4px;
+  width:100%; display:block; border-radius:6px;
 }
 .vs-scan-beam{
   position:absolute; left:0; right:0; height:2px;
   background:linear-gradient(90deg,transparent,rgba(139,92,255,.7),transparent);
   animation:scanbeam 3.5s linear infinite; z-index:2; top:0;
+}
+
+.vs-desc{
+  max-width:min(860px,94vw);
+  margin:0 auto;
+  padding:48px clamp(18px,5vw,64px) 56px;
+  text-align:center;
 }
 
 /* VoidSynth section index + line */
