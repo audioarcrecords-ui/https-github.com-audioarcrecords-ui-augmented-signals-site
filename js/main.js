@@ -91,6 +91,56 @@ if (dlBtn) {
 /* ============================================================ *
  *  Contact form (Web3Forms — no backend needed)
  * ============================================================ */
+/* ============================================================ *
+ *  3D cursor-tilt on the VoidSynth showcase
+ * ============================================================ */
+(() => {
+  const stage = document.getElementById("vs-stage");
+  const frame = document.getElementById("vsFrame");
+  if (!stage || !frame) return;
+  let raf = null;
+  stage.addEventListener("mousemove", (e) => {
+    const r = stage.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width - 0.5;
+    const py = (e.clientY - r.top) / r.height - 0.5;
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      frame.style.transform =
+        `rotateY(${px * 10}deg) rotateX(${-py * 10}deg) scale(1.015)`;
+    });
+  });
+  stage.addEventListener("mouseleave", () => {
+    frame.style.transform = "rotateY(0) rotateX(0) scale(1)";
+  });
+})();
+
+/* ============================================================ *
+ *  Waitlist form (Web3Forms)
+ * ============================================================ */
+const waitlistForm = document.getElementById("waitlist-form");
+if (waitlistForm) {
+  const status = document.getElementById("waitlist-status");
+  waitlistForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    status.className = "form-status";
+    status.textContent = "Transmitting…";
+    try {
+      const res = await fetch(waitlistForm.action, { method: "POST", body: new FormData(waitlistForm) });
+      const data = await res.json();
+      if (data.success) {
+        status.className = "form-status ok";
+        status.textContent = "✓ You're on the list. We'll signal you at launch.";
+        waitlistForm.reset();
+      } else {
+        throw new Error(data.message || "failed");
+      }
+    } catch {
+      status.className = "form-status err";
+      status.textContent = "✗ Transmission failed. Email augmentedsignals@outlook.com instead.";
+    }
+  });
+}
+
 const form = document.getElementById("contact-form");
 if (form) {
   const status = document.getElementById("form-status");

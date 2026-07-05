@@ -281,3 +281,109 @@ h1,h2,h3{ font-family:"Orbitron", sans-serif; letter-spacing:.04em; }
   .form-row{ grid-template-columns:1fr; }
   .nav-links{ gap:14px; }
 }
+
+/* ============================================================ *
+ *  VOIDSYNTH SECTION
+ * ============================================================ */
+
+/* Product divider between plugins */
+.product-divider{
+  text-align:center;
+  padding:60px clamp(18px,5vw,64px) 20px;
+  position:relative;
+}
+.product-divider::before,.product-divider::after{
+  content:""; position:absolute; top:50%; width:calc(50% - 160px);
+  height:1px; background:linear-gradient(90deg,transparent,rgba(139,92,255,.35));
+}
+.product-divider::before{ left:clamp(18px,5vw,64px); }
+.product-divider::after{ right:clamp(18px,5vw,64px); transform:scaleX(-1); }
+.product-divider span{
+  font-family:"Orbitron"; font-size:.7rem; letter-spacing:.22em;
+  color:var(--violet); opacity:.7; padding:0 18px; position:relative;
+}
+
+/* VoidSynth eyebrow & accent */
+.vs-eyebrow{ color:var(--violet); }
+.vs-accent{ color:var(--violet); }
+
+/* VoidSynth showcase — mirrors .showcase but violet-tinted */
+.vs-showcase{ border-top:1px solid rgba(139,92,255,.15); }
+
+.vs-stage{ perspective:900px; }
+
+.vs-frame{
+  position:relative;
+  border:1px solid rgba(139,92,255,.35);
+  border-radius:6px;
+  overflow:hidden;
+  box-shadow:0 0 40px rgba(139,92,255,.2), 0 0 80px rgba(139,92,255,.08), inset 0 0 30px rgba(139,92,255,.05);
+  transition:transform .12s ease;
+}
+.vs-glow{
+  position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(ellipse at 50% 0%, rgba(139,92,255,.18) 0%, transparent 65%);
+  z-index:1;
+}
+.vs-img{
+  width:100%; display:block; border-radius:4px;
+}
+.vs-scan-beam{
+  position:absolute; left:0; right:0; height:2px;
+  background:linear-gradient(90deg,transparent,rgba(139,92,255,.7),transparent);
+  animation:scanbeam 3.5s linear infinite; z-index:2; top:0;
+}
+
+/* VoidSynth section index + line */
+.vs-sec-index{ color:var(--violet) !important; }
+.vs-sec-line{ background:rgba(139,92,255,.4) !important; }
+
+/* VoidSynth feature grid — violet accents */
+.vs-feature-grid li b{ color:var(--violet); }
+.vs-feature-grid li{
+  border-color:rgba(139,92,255,.2);
+  background:linear-gradient(135deg,rgba(139,92,255,.05),transparent);
+}
+.vs-feature-grid li:hover{
+  border-color:rgba(139,92,255,.5);
+  box-shadow:0 0 14px rgba(139,92,255,.15);
+}
+
+/* VoidSynth tags */
+.vs-tags span{
+  background:rgba(139,92,255,.12);
+  border:1px solid rgba(139,92,255,.35);
+  color:var(--violet);
+}
+
+/* Waitlist section */
+.vs-waitlist-section{ border-top:1px solid rgba(139,92,255,.15); }
+
+.vs-waitlist-form input,
+.vs-waitlist-form select,
+.vs-waitlist-form textarea{
+  border-color:rgba(139,92,255,.3);
+}
+.vs-waitlist-form input:focus,
+.vs-waitlist-form select:focus{
+  border-color:var(--violet);
+  box-shadow:0 0 0 2px rgba(139,92,255,.2);
+  outline:none;
+}
+
+/* Violet primary button */
+.vs-btn-primary{
+  background:linear-gradient(135deg,#6b3aee,#8b5cff);
+  color:#fff; border:none;
+  box-shadow:0 0 18px rgba(139,92,255,.45);
+  transition:box-shadow .2s, transform .15s;
+}
+.vs-btn-primary:hover{
+  box-shadow:0 0 32px rgba(139,92,255,.7);
+  transform:translateY(-1px);
+}
+
+@media (max-width:760px){
+  .vs-feature-grid{ grid-template-columns:1fr; }
+  .product-divider::before,.product-divider::after{ display:none; }
+}
