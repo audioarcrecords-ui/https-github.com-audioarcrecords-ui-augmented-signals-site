@@ -310,7 +310,8 @@ h1,h2,h3{ font-family:"Orbitron", sans-serif; letter-spacing:.04em; }
 /* VoidSynth showcase — mirrors .showcase but violet-tinted */
 .vs-showcase{ border-top:1px solid rgba(139,92,255,.15); }
 
-.vs-stage{ perspective:900px; width:min(1400px,99vw); }
+.vs-stage-floor{ width:70%; height:60px; margin:-6px auto 0; border-radius:50%;
+  background:radial-gradient(ellipse at center, rgba(139,92,255,.28), transparent 70%); filter:blur(8px); }
 
 .vs-frame{
   position:relative;
