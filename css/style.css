@@ -235,6 +235,8 @@ h1,h2,h3{ font-family:"Orbitron", sans-serif; letter-spacing:.04em; }
 }
 .dl-info h3{ font-size:1.2rem; margin-bottom:8px; }
 .dl-note{ color:var(--text-dim); font-size:.8rem; margin-top:10px; max-width:440px; }
+.dl-actions{ display:flex; flex-direction:column; gap:12px; align-items:stretch; }
+.dl-actions .btn{ text-align:center; }
 .dl-changelog{
   list-style:none; margin:10px 0 12px; display:flex; flex-direction:column; gap:7px;
 }
@@ -378,6 +380,15 @@ h1,h2,h3{ font-family:"Orbitron", sans-serif; letter-spacing:.04em; }
 
 /* Waitlist section */
 .vs-waitlist-section{ border-top:1px solid rgba(139,92,255,.15); }
+
+/* VoidSynth demo video — sits under the showcase image */
+.vs-video-wrap{ width:min(820px,94vw); margin:32px auto 0; }
+.vs-video-frame{
+  position:relative; width:100%; padding-top:56.25%;
+  border:1px solid rgba(139,92,255,.35); border-radius:6px; overflow:hidden;
+  box-shadow:0 0 40px rgba(139,92,255,.2), 0 0 80px rgba(139,92,255,.08);
+}
+.vs-video-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
 
 .vs-waitlist-form input,
 .vs-waitlist-form select,
