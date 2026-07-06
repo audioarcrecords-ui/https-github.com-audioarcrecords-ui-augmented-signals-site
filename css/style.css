@@ -315,6 +315,17 @@ h1,h2,h3{ font-family:"Orbitron", sans-serif; letter-spacing:.04em; }
 .vs-stage-floor{ width:70%; height:60px; margin:-6px auto 0; border-radius:50%;
   background:radial-gradient(ellipse at center, rgba(139,92,255,.28), transparent 70%); filter:blur(8px); }
 
+.vs-video-wrap{ width:min(900px,94vw); margin:34px auto 8px; }
+.vs-video-frame{
+  position:relative; width:100%; padding-top:56.25%; /* 16:9 */
+  border:1px solid rgba(139,92,255,.35); border-radius:6px; overflow:hidden;
+  box-shadow:0 0 40px rgba(139,92,255,.2), 0 0 80px rgba(139,92,255,.08);
+  background:#05060d;
+}
+.vs-video-frame iframe{
+  position:absolute; inset:0; width:100%; height:100%; border:0;
+}
+
 .vs-frame{
   position:relative;
   border:1px solid rgba(139,92,255,.35);
