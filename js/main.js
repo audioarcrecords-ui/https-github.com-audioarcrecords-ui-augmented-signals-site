@@ -117,14 +117,28 @@ if (dlBtn) {
 /* ============================================================ *
  *  Waitlist form (Web3Forms)
  * ============================================================ */
+function getCaptchaToken(formEl) {
+  const div = formEl.querySelector(".h-captcha");
+  if (!div) return null;
+  const widgetId = div.getAttribute("data-hcaptcha-widget-id");
+  if (window.hcaptcha && widgetId) return hcaptcha.getResponse(widgetId) || null;
+  return formEl.querySelector('[name="h-captcha-response"]')?.value || null;
+}
+
+function resetCaptcha(formEl) {
+  if (!window.hcaptcha) return;
+  const div = formEl.querySelector(".h-captcha");
+  const widgetId = div && div.getAttribute("data-hcaptcha-widget-id");
+  widgetId ? hcaptcha.reset(widgetId) : hcaptcha.reset();
+}
+
 const waitlistForm = document.getElementById("waitlist-form");
 if (waitlistForm) {
   const status = document.getElementById("waitlist-status");
   const waitlistCaptcha = waitlistForm.querySelector(".h-captcha");
   waitlistForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const captchaToken = waitlistForm.querySelector('[name="h-captcha-response"]')?.value;
-    if (waitlistCaptcha && !captchaToken) {
+    if (waitlistCaptcha && !getCaptchaToken(waitlistForm)) {
       status.className = "form-status err";
       status.textContent = "⚠ Please complete the captcha.";
       return;
@@ -138,7 +152,7 @@ if (waitlistForm) {
         status.className = "form-status ok";
         status.textContent = "✓ You're on the list. We'll signal you at launch.";
         waitlistForm.reset();
-        if (window.hcaptcha) hcaptcha.reset();
+        resetCaptcha(waitlistForm);
       } else {
         throw new Error(data.message || "failed");
       }
@@ -162,8 +176,7 @@ if (form) {
       return;
     }
     const contactCaptcha = form.querySelector(".h-captcha");
-    const captchaToken = form.querySelector('[name="h-captcha-response"]')?.value;
-    if (contactCaptcha && !captchaToken) {
+    if (contactCaptcha && !getCaptchaToken(form)) {
       status.className = "form-status err";
       status.textContent = "⚠ Please complete the captcha.";
       return;
@@ -177,7 +190,7 @@ if (form) {
         status.className = "form-status ok";
         status.textContent = "✓ Signal received. We'll get back to you.";
         form.reset();
-        if (window.hcaptcha) hcaptcha.reset();
+        resetCaptcha(form);
       } else {
         throw new Error(data.message || "failed");
       }
