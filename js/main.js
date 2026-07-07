@@ -120,9 +120,11 @@ if (dlBtn) {
 const waitlistForm = document.getElementById("waitlist-form");
 if (waitlistForm) {
   const status = document.getElementById("waitlist-status");
+  const waitlistCaptcha = waitlistForm.querySelector(".h-captcha");
   waitlistForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    if (window.hcaptcha && !hcaptcha.getResponse()) {
+    const captchaToken = waitlistForm.querySelector('[name="h-captcha-response"]')?.value;
+    if (waitlistCaptcha && !captchaToken) {
       status.className = "form-status err";
       status.textContent = "⚠ Please complete the captcha.";
       return;
@@ -159,7 +161,9 @@ if (form) {
       status.textContent = "⚠ Form not configured yet — add your Web3Forms access key.";
       return;
     }
-    if (window.hcaptcha && !hcaptcha.getResponse()) {
+    const contactCaptcha = form.querySelector(".h-captcha");
+    const captchaToken = form.querySelector('[name="h-captcha-response"]')?.value;
+    if (contactCaptcha && !captchaToken) {
       status.className = "form-status err";
       status.textContent = "⚠ Please complete the captcha.";
       return;
