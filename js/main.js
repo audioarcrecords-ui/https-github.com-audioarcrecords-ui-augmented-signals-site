@@ -117,18 +117,20 @@ if (dlBtn) {
 /* ============================================================ *
  *  Waitlist form (Web3Forms)
  * ============================================================ */
+function getHCaptchaWidgetId(formEl) {
+  const iframe = formEl.querySelector('.h-captcha iframe[data-hcaptcha-widget-id]');
+  return iframe ? iframe.getAttribute('data-hcaptcha-widget-id') : null;
+}
+
 function getCaptchaToken(formEl) {
-  const div = formEl.querySelector(".h-captcha");
-  if (!div) return null;
-  const widgetId = div.getAttribute("data-hcaptcha-widget-id");
+  const widgetId = getHCaptchaWidgetId(formEl);
   if (window.hcaptcha && widgetId) return hcaptcha.getResponse(widgetId) || null;
   return formEl.querySelector('[name="h-captcha-response"]')?.value || null;
 }
 
 function resetCaptcha(formEl) {
   if (!window.hcaptcha) return;
-  const div = formEl.querySelector(".h-captcha");
-  const widgetId = div && div.getAttribute("data-hcaptcha-widget-id");
+  const widgetId = getHCaptchaWidgetId(formEl);
   widgetId ? hcaptcha.reset(widgetId) : hcaptcha.reset();
 }
 
@@ -146,7 +148,10 @@ if (waitlistForm) {
     status.className = "form-status";
     status.textContent = "Transmitting…";
     try {
-      const res = await fetch(waitlistForm.action, { method: "POST", body: new FormData(waitlistForm) });
+      const fd = new FormData(waitlistForm);
+      const wToken = getCaptchaToken(waitlistForm);
+      if (wToken) fd.set('h-captcha-response', wToken);
+      const res = await fetch(waitlistForm.action, { method: "POST", body: fd });
       const data = await res.json();
       if (data.success) {
         status.className = "form-status ok";
@@ -184,7 +189,10 @@ if (form) {
     status.className = "form-status";
     status.textContent = "Transmitting…";
     try {
-      const res = await fetch(form.action, { method: "POST", body: new FormData(form) });
+      const fd = new FormData(form);
+      const cToken = getCaptchaToken(form);
+      if (cToken) fd.set('h-captcha-response', cToken);
+      const res = await fetch(form.action, { method: "POST", body: fd });
       const data = await res.json();
       if (data.success) {
         status.className = "form-status ok";
