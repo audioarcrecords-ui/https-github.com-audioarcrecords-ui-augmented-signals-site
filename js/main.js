@@ -140,9 +140,10 @@ if (waitlistForm) {
       } else {
         throw new Error(data.message || "failed");
       }
-    } catch {
+    } catch (err) {
       status.className = "form-status err";
-      status.textContent = "✗ Transmission failed. Email augmentedsignals@outlook.com instead.";
+      const reason = err && err.message && err.message !== "failed" ? err.message : "Transmission failed.";
+      status.textContent = `✗ ${reason} Email augmentedsignals@outlook.com instead.`;
     }
   });
 }
@@ -176,9 +177,10 @@ if (form) {
       } else {
         throw new Error(data.message || "failed");
       }
-    } catch {
+    } catch (err) {
       status.className = "form-status err";
-      status.textContent = "✗ Transmission failed. Email audioarcrecords@gmail.com instead.";
+      const reason = err && err.message && err.message !== "failed" ? err.message : "Transmission failed.";
+      status.textContent = `✗ ${reason} Email audioarcrecords@gmail.com instead.`;
     }
   });
 }
