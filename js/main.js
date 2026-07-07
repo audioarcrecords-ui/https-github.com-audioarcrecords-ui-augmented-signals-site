@@ -122,6 +122,11 @@ if (waitlistForm) {
   const status = document.getElementById("waitlist-status");
   waitlistForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+    if (window.hcaptcha && !hcaptcha.getResponse()) {
+      status.className = "form-status err";
+      status.textContent = "⚠ Please complete the captcha.";
+      return;
+    }
     status.className = "form-status";
     status.textContent = "Transmitting…";
     try {
@@ -131,6 +136,7 @@ if (waitlistForm) {
         status.className = "form-status ok";
         status.textContent = "✓ You're on the list. We'll signal you at launch.";
         waitlistForm.reset();
+        if (window.hcaptcha) hcaptcha.reset();
       } else {
         throw new Error(data.message || "failed");
       }
@@ -152,6 +158,11 @@ if (form) {
       status.textContent = "⚠ Form not configured yet — add your Web3Forms access key.";
       return;
     }
+    if (window.hcaptcha && !hcaptcha.getResponse()) {
+      status.className = "form-status err";
+      status.textContent = "⚠ Please complete the captcha.";
+      return;
+    }
     status.className = "form-status";
     status.textContent = "Transmitting…";
     try {
@@ -161,6 +172,7 @@ if (form) {
         status.className = "form-status ok";
         status.textContent = "✓ Signal received. We'll get back to you.";
         form.reset();
+        if (window.hcaptcha) hcaptcha.reset();
       } else {
         throw new Error(data.message || "failed");
       }
