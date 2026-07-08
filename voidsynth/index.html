@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VoidSynth — AI Wavetable Synthesizer VST3 | Augmented Signals</title>
+<meta name="description" content="VoidSynth is a next-generation AI-powered wavetable synthesizer VST3. Dual oscillators, 11 FX modules, real-time AI patch generation. Coming soon for Windows. Join the waitlist." />
+<link rel="canonical" href="https://augmentedsignals.com/voidsynth/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Augmented Signals" />
+<meta property="og:url" content="https://augmentedsignals.com/voidsynth/" />
+<meta property="og:title" content="VoidSynth — AI-Powered Wavetable Synthesizer VST3" />
+<meta property="og:description" content="Dual wavetable oscillators, triple LFOs, 11 FX modules, and real-time AI patch generation. The synthesizer that thinks. Coming soon." />
+<meta property="og:image" content="https://augmentedsignals.com/assets/voidsynth.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="VoidSynth — AI Wavetable Synth VST3" />
+<meta name="twitter:description" content="AI-powered wavetable synthesizer. Dual OSCs, 11 FX, granular timestretch, spectral glitch. Coming soon for Windows." />
+<meta name="twitter:image" content="https://augmentedsignals.com/assets/voidsynth.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "VoidSynth",
+      "operatingSystem": "Windows 10, Windows 11",
+      "applicationCategory": "MultimediaApplication",
+      "description": "AI-powered wavetable synthesizer with dual oscillators, triple LFOs, 11 FX modules, and real-time AI patch generation. VST3 + Standalone for Windows.",
+      "url": "https://augmentedsignals.com/voidsynth/",
+      "publisher": { "@type": "Organization", "name": "Augmented Signals", "url": "https://augmentedsignals.com" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is VoidSynth?",
+          "acceptedAnswer": { "@type": "Answer", "text": "VoidSynth is an AI-powered wavetable synthesizer VST3 plugin for Windows. It features dual oscillators (wavetable, sample, and granular modes), triple LFOs, a resonant filter, the MUTANT waveshaper, and 11 real-time FX modules including granular freeze, spectral glitch, and XY pad modulation. A built-in AI engine generates and morphs patches in real time." }
+        },
+        {
+          "@type": "Question",
+          "name": "When will VoidSynth be released?",
+          "acceptedAnswer": { "@type": "Answer", "text": "VoidSynth is coming soon. Join the waitlist at augmentedsignals.com to be the first to know when it launches." }
+        },
+        {
+          "@type": "Question",
+          "name": "Will VoidSynth be free?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Pricing has not been announced yet. Join the waitlist to be notified of the release and any early-access pricing." }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the AI synthesis in VoidSynth work?",
+          "acceptedAnswer": { "@type": "Answer", "text": "VoidSynth's built-in AI engine analyzes your current patch and suggests morphed variations, generates entirely new patches based on audio descriptors, and evolves sounds in real time — all without leaving the plugin interface." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/css/style.css" />
+<style>
+.page-hero{padding:7rem 1.5rem 4rem;text-align:center;max-width:900px;margin:0 auto}
+.page-hero h1{font-family:'Orbitron',sans-serif;font-size:clamp(2.2rem,6vw,4rem);font-weight:900;margin-bottom:1rem;color:#fff}
+.page-hero p{font-size:1.15rem;color:#aaa;max-width:640px;margin:0 auto 2rem}
+.breadcrumb{font-family:'Share Tech Mono',monospace;font-size:.8rem;color:#555;margin-bottom:2rem;text-align:center}
+.breadcrumb a{color:#00e5ff;text-decoration:none}
+.vs-accent{color:#00e5ff}
+.vs-eyebrow{color:#00e5ff}
+.faq-section{max-width:800px;margin:3rem auto;padding:0 1.5rem}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.08);padding:1.5rem 0}
+.faq-item h3{font-family:'Orbitron',sans-serif;font-size:.95rem;color:#fff;margin-bottom:.75rem}
+.faq-item p{font-family:'Share Tech Mono',monospace;font-size:.87rem;color:#aaa;line-height:1.7;margin:0}
+.waitlist-hero{text-align:center;padding:3rem 1.5rem;background:rgba(0,229,255,.05);border:1px solid rgba(0,229,255,.2);border-radius:12px;max-width:700px;margin:3rem auto}
+.waitlist-hero h2{font-family:'Orbitron',sans-serif;color:#fff;margin-bottom:.5rem}
+.waitlist-hero p{color:#aaa;margin-bottom:1.5rem;font-family:'Share Tech Mono',monospace;font-size:.9rem}
+.btn-vs{background:linear-gradient(135deg,#00e5ff,#0099bb);color:#000;font-weight:700}
+.tag-list{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-top:1rem}
+.tag-list span{font-family:'Share Tech Mono',monospace;font-size:.75rem;background:rgba(0,229,255,.07);border:1px solid rgba(0,229,255,.2);border-radius:4px;padding:.25rem .6rem;color:#aaa}
+.ai-badge{display:inline-block;background:linear-gradient(135deg,rgba(0,229,255,.15),rgba(124,111,255,.15));border:1px solid rgba(0,229,255,.3);border-radius:20px;padding:.4rem 1rem;font-family:'Share Tech Mono',monospace;font-size:.8rem;color:#00e5ff;margin-bottom:1.5rem}
+</style>
+</head>
+<body>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="scanlines" aria-hidden="true"></div>
+
+<header class="nav">
+  <a href="/" class="brand"><span class="brand-mark">◈</span><span class="brand-name">AUGMENTED&nbsp;SIGNALS</span></a>
+  <nav class="nav-links">
+    <a href="/voidsynth/">VoidSynth</a>
+    <a href="/glitch-in-time/">Glitch in Time</a>
+    <a href="/#download">Download</a>
+    <a href="/#waitlist">Waitlist</a>
+    <a href="/blog/">Blog</a>
+  </nav>
+</header>
+
+<main>
+  <div class="breadcrumb">
+    <a href="/">Home</a> / VoidSynth
+  </div>
+
+  <div class="page-hero">
+    <div class="ai-badge">✦ AI-POWERED SYNTHESIS</div>
+    <p class="eyebrow vs-eyebrow">// COMING SOON — VOIDSYNTH</p>
+    <h1>Sculpt the Void.<br/><span class="vs-accent">Command the Signal.</span></h1>
+    <p>Dual wavetable engines. Eleven FX modules. One synthesizer that thinks. VoidSynth is a next-generation AI wavetable synthesizer VST3 for Windows — built for producers who demand total control.</p>
+    <a href="/#waitlist" class="btn btn-primary btn-lg btn-vs">Join the Waitlist →</a>
+    <div class="tag-list">
+      <span>AI-Powered</span><span>VST3 + Standalone</span><span>Windows 10/11</span><span>Coming Soon</span><span>Wavetable</span><span>Granular</span>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-head"><span class="sec-index vs-sec-index">01</span><h2>What is VoidSynth?</h2><div class="sec-line vs-sec-line"></div></div>
+    <div style="max-width:800px;margin:0 auto;padding:0 1.5rem">
+      <p style="color:#ccc;font-size:1.05rem;line-height:1.8;margin-bottom:1.5rem">
+        VoidSynth is an AI-powered wavetable synthesizer VST3 plugin for Windows. Unlike conventional synths that give you fixed oscillators and preset-based workflows, VoidSynth fuses deep sound design architecture with a built-in AI engine that generates, morphs, and suggests patches in real time — without ever leaving the plugin.
+      </p>
+      <p style="color:#ccc;font-size:1.05rem;line-height:1.8;margin-bottom:1.5rem">
+        Two independent oscillators — each switchable between wavetable, sample, and granular modes — feed into a full modulation architecture: triple LFOs, a resonant filter with drive and vowel formant shaping, and the MUTANT waveshaper for FM, waveshaping, and chaos modulation. Then eleven real-time FX modules take your sound further: granular freeze, V.GRAIN timestretch, spectral glitch, XY pad modulation, arpeggiator, multi-band spatial control, and AURA spatial field processing.
+      </p>
+      <img src="/assets/voidsynth.png" alt="VoidSynth AI wavetable synthesizer interface showing dual oscillators, LFOs, FX chain and AI patch generator" style="width:100%;max-width:700px;display:block;margin:2rem auto;border-radius:8px;border:1px solid rgba(0,229,255,.15)" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><span class="sec-index vs-sec-index">02</span><h2>Features</h2><div class="sec-line vs-sec-line"></div></div>
+    <ul class="feature-grid vs-feature-grid">
+      <li><b>Dual wavetable OSCs</b><span>WT · sample · granular — switchable per oscillator</span></li>
+      <li><b>Triple LFOs</b><span>Multiple shapes · tempo-sync · phase · retrigger</span></li>
+      <li><b>Resonant filter</b><span>LP · HP · BP · drive · vowel formant shaping</span></li>
+      <li><b>MUTANT engine</b><span>FM · waveshaping · tone · spread · chaos modulation</span></li>
+      <li><b>Drift + Character</b><span>Analog warmth, instability &amp; harmonic texture</span></li>
+      <li><b>V.GRAIN — Void Grain</b><span>Granular timestretch · scatter · pitch · spray</span></li>
+      <li><b>Spectral Glitch FX</b><span>Freeze, mangle and scatter the frequency spectrum</span></li>
+      <li><b>XY Pad modulation</b><span>Expressive real-time modulation surface</span></li>
+      <li><b>Arpeggiator</b><span>Pattern-based arpeggiator with rhythm control</span></li>
+      <li><b>AURA spatial field</b><span>Lush 3D spatial processing</span></li>
+      <li><b>Multi-band spatial</b><span>Per-band stereo width and imaging</span></li>
+      <li><b>AI patch engine</b><span>Generate, morph &amp; evolve patches in real time</span></li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><span class="sec-index vs-sec-index">03</span><h2>How the AI Synthesis Works</h2><div class="sec-line vs-sec-line"></div></div>
+    <div style="max-width:800px;margin:0 auto;padding:0 1.5rem">
+      <p style="color:#ccc;font-size:1.05rem;line-height:1.8;margin-bottom:1.5rem">
+        VoidSynth's built-in AI engine is not a gimmick. It's a real-time system trained on synthesis parameters that understands how sound design works. Give it a descriptor — "dark, evolving pad" or "aggressive bass" — and it builds a patch that matches. Hit Morph and it generates new variations of your current patch while preserving its character. Let it Evolve and the patch changes over time, creating sounds that were impossible to design manually.
+      </p>
+      <p style="color:#ccc;font-size:1.05rem;line-height:1.8;margin-bottom:1.5rem">
+        This is AI synthesis as a creative partner, not a replacement for skill. Every AI-generated patch is fully editable. The goal is to get you to interesting sounds faster — then let your ear and hands take it the rest of the way.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><span class="sec-index vs-sec-index">04</span><h2>Frequently Asked Questions</h2><div class="sec-line vs-sec-line"></div></div>
+    <div class="faq-section">
+      <div class="faq-item">
+        <h3>When will VoidSynth be released?</h3>
+        <p>VoidSynth is coming soon. Join the waitlist on our homepage to be the first to know — waitlist members get early access and release-day pricing.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How does the AI patch generation work?</h3>
+        <p>VoidSynth's AI engine generates synthesis parameters in real time based on your input. You can describe a sound, morph your current patch into something new, or let it evolve autonomously. All generated patches are fully editable.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What's the difference between wavetable, sample, and granular mode?</h3>
+        <p>Wavetable mode scans through waveforms for harmonic evolution. Sample mode plays back loaded audio with pitch tracking. Granular mode breaks audio into tiny grains for timestretch, pitch, and textural effects. VoidSynth lets you switch each oscillator between all three independently.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Will VoidSynth be free like Glitch in Time?</h3>
+        <p>Pricing hasn't been announced yet. Join the waitlist — we'll share details there first, including any early-access or waitlist-exclusive pricing.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Does VoidSynth work on Mac?</h3>
+        <p>The initial release will be Windows 10/11 (64-bit). Mac support is planned. Join the waitlist to be notified.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="waitlist-hero">
+    <h2>Be First in Line</h2>
+    <p>Join the waitlist for early access, release notifications, and waitlist-only pricing.</p>
+    <a href="/#waitlist" class="btn btn-primary btn-lg btn-vs">Join the Waitlist →</a>
+  </div>
+
+  <section class="section" style="text-align:center;padding:3rem 1.5rem">
+    <p style="color:#666;font-family:'Share Tech Mono',monospace;font-size:.9rem;margin-bottom:1rem">While you wait — grab our free glitch plugin</p>
+    <a href="/glitch-in-time/" class="btn btn-ghost">Download Glitch in Time Free →</a>
+  </section>
+</main>
+
+<footer style="text-align:center;padding:3rem 1.5rem 2rem;border-top:1px solid rgba(255,255,255,.06)">
+  <a href="/" class="brand" style="justify-content:center;margin-bottom:1.5rem;display:flex"><span class="brand-mark">◈</span><span class="brand-name">AUGMENTED&nbsp;SIGNALS</span></a>
+  <nav style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem">
+    <a href="/glitch-in-time/" style="color:#666;font-family:'Share Tech Mono',monospace;font-size:.85rem;text-decoration:none">Glitch in Time</a>
+    <a href="/voidsynth/" style="color:#666;font-family:'Share Tech Mono',monospace;font-size:.85rem;text-decoration:none">VoidSynth</a>
+    <a href="/blog/" style="color:#666;font-family:'Share Tech Mono',monospace;font-size:.85rem;text-decoration:none">Blog</a>
+    <a href="/#contact" style="color:#666;font-family:'Share Tech Mono',monospace;font-size:.85rem;text-decoration:none">Contact</a>
+  </nav>
+  <p style="color:#444;font-family:'Share Tech Mono',monospace;font-size:.75rem">© 2026 Augmented Signals</p>
+</footer>
+
+<script src="/js/main.js"></script>
+</body>
+</html>
