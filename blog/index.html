@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blog — Music Production, AI Synthesis & Audio Plugins | Augmented Signals</title>
+<meta name="description" content="Tips, tutorials, and deep-dives on music production, AI synthesis, VST plugins, DAW workflow, and sound design from the team at Augmented Signals." />
+<link rel="canonical" href="https://augmentedsignals.com/blog/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://augmentedsignals.com/blog/" />
+<meta property="og:title" content="Blog — Music Production, AI Synthesis & Audio Plugins" />
+<meta property="og:description" content="Tips, tutorials, and deep-dives on music production, AI synthesis, VST plugins, and sound design." />
+<meta property="og:image" content="https://augmentedsignals.com/assets/plugin.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/css/style.css" />
+<style>
+.blog-hero{padding:7rem 1.5rem 3rem;text-align:center;max-width:800px;margin:0 auto}
+.blog-hero h1{font-family:'Orbitron',sans-serif;font-size:clamp(1.8rem,5vw,3rem);font-weight:900;margin-bottom:1rem;color:#fff}
+.blog-hero p{font-size:1rem;color:#aaa;max-width:540px;margin:0 auto}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;max-width:1100px;margin:3rem auto;padding:0 1.5rem}
+.blog-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:2rem;transition:border-color .2s,transform .2s;display:flex;flex-direction:column}
+.blog-card:hover{border-color:rgba(124,111,255,.4);transform:translateY(-3px)}
+.blog-card a{text-decoration:none;color:inherit}
+.card-tag{font-family:'Share Tech Mono',monospace;font-size:.72rem;color:#7c6fff;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem}
+.card-title{font-family:'Orbitron',sans-serif;font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:.75rem;line-height:1.4}
+.card-excerpt{font-family:'Share Tech Mono',monospace;font-size:.83rem;color:#888;line-height:1.7;margin-bottom:1.25rem;flex:1}
+.card-meta{font-family:'Share Tech Mono',monospace;font-size:.75rem;color:#555;display:flex;gap:1rem;align-items:center}
+.card-read{color:#7c6fff;font-family:'Share Tech Mono',monospace;font-size:.8rem;text-decoration:none;margin-top:1rem;display:inline-block}
+.card-read:hover{color:#fff}
+</style>
+</head>
+<body>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="scanlines" aria-hidden="true"></div>
+
+<header class="nav">
+  <a href="/" class="brand"><span class="brand-mark">◈</span><span class="brand-name">AUGMENTED&nbsp;SIGNALS</span></a>
+  <nav class="nav-links">
+    <a href="/voidsynth/">VoidSynth</a>
+    <a href="/glitch-in-time/">Glitch in Time</a>
+    <a href="/#download">Download</a>
+    <a href="/#waitlist">Waitlist</a>
+    <a href="/blog/">Blog</a>
+  </nav>
+</header>
+
+<main>
+  <div class="blog-hero">
+    <p class="eyebrow">// AUGMENTED SIGNALS BLOG</p>
+    <h1>Music Production &amp; AI Synthesis</h1>
+    <p>Tutorials, guides, and deep-dives on VST plugins, AI music production tools, DAW workflow, and sound design.</p>
+  </div>
+
+  <div class="blog-grid">
+
+    <article class="blog-card">
+      <a href="/blog/best-free-glitch-vst-plugins-2026/">
+        <p class="card-tag">Plugin Guide</p>
+        <h2 class="card-title">7 Best Free Glitch VST Plugins for Music Production (2026)</h2>
+        <p class="card-excerpt">The definitive roundup of free glitch, stutter, and texture plugins — ranked by sound quality, CPU efficiency, and DAW compatibility. Covers Glitch in Time, Effectrix alternatives, and more.</p>
+        <div class="card-meta"><span>July 2026</span><span>8 min read</span></div>
+      </a>
+      <a href="/blog/best-free-glitch-vst-plugins-2026/" class="card-read">Read article →</a>
+    </article>
+
+    <article class="blog-card">
+      <a href="/blog/ai-synthesis-music-production-guide/">
+        <p class="card-tag">AI &amp; Synthesis</p>
+        <h2 class="card-title">What Is AI Synthesis? How AI Is Transforming Music Production</h2>
+        <p class="card-excerpt">From neural audio generation to real-time patch creation — a clear, practical explanation of how AI synthesis works and how producers are using it right now.</p>
+        <div class="card-meta"><span>July 2026</span><span>10 min read</span></div>
+      </a>
+      <a href="/blog/ai-synthesis-music-production-guide/" class="card-read">Read article →</a>
+    </article>
+
+    <article class="blog-card">
+      <a href="/blog/how-to-glitch-audio-ableton-fl-studio/">
+        <p class="card-tag">Tutorial</p>
+        <h2 class="card-title">How to Get a Glitch Sound in Ableton, FL Studio &amp; Reaper (2026)</h2>
+        <p class="card-excerpt">Step-by-step guide to creating professional glitch and stutter effects in any DAW — using native tools, VST plugins, and free alternatives. Works for beats, synths, and vocals.</p>
+        <div class="card-meta"><span>July 2026</span><span>9 min read</span></div>
+      </a>
+      <a href="/blog/how-to-glitch-audio-ableton-fl-studio/" class="card-read">Read article →</a>
+    </article>
+
+  </div>
+</main>
+
+<footer style="text-align:center;padding:3rem 1.5rem 2rem;border-top:1px solid rgba(255,255,255,.06);margin-top:4rem">
+  <a href="/" class="brand" style="justify-content:center;margin-bottom:1.5rem;display:flex"><span class="brand-mark">◈</span><span class="brand-name">AUGMENTED&nbsp;SIGNALS</span></a>
+  <nav style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem">
+    <a href="/glitch-in-time/" style="color:#666;font-family:'Share Tech Mono',monospace;font-size:.85rem;text-decoration:none">Glitch in Time</a>
+    <a href="/voidsynth/" style="color:#666;font-family:'Share Tech Mono',monospace;font-size:.85rem;text-decoration:none">VoidSynth</a>
+    <a href="/blog/" style="color:#666;font-family:'Share Tech Mono',monospace;font-size:.85rem;text-decoration:none">Blog</a>
+    <a href="/#contact" style="color:#666;font-family:'Share Tech Mono',monospace;font-size:.85rem;text-decoration:none">Contact</a>
+  </nav>
+  <p style="color:#444;font-family:'Share Tech Mono',monospace;font-size:.75rem">© 2026 Augmented Signals</p>
+</footer>
+<script src="/js/main.js"></script>
+</body>
+</html>
