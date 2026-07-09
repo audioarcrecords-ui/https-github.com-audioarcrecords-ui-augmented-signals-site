@@ -44,6 +44,9 @@
 .plugin-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:1.75rem;margin:2rem 0}
 .plugin-rank{font-family:'Orbitron',sans-serif;font-size:.7rem;color:#7c6fff;letter-spacing:.15em;margin-bottom:.5rem}
 .plugin-card h3{font-family:'Orbitron',sans-serif;font-size:1.1rem;color:#fff;margin:0 0 .75rem}
+.plugin-img-wrap{width:100%;border-radius:8px;overflow:hidden;margin-bottom:1.25rem;border:1px solid rgba(255,255,255,.08)}
+.plugin-img-wrap img{width:100%;display:block}
+.plugin-img-wrap svg{width:100%;display:block}
 .plugin-pros{display:flex;gap:.5rem;flex-wrap:wrap;margin:.75rem 0}
 .pro-tag{background:rgba(124,111,255,.12);border:1px solid rgba(124,111,255,.25);border-radius:4px;padding:.2rem .6rem;font-family:'Share Tech Mono',monospace;font-size:.72rem;color:#a09bff}
 .breadcrumb{font-family:'Share Tech Mono',monospace;font-size:.8rem;color:#555;margin-bottom:2rem}
@@ -99,6 +102,9 @@
   <h2>The 7 Best Free Glitch VST Plugins (2026)</h2>
 
   <div class="plugin-card">
+    <div class="plugin-img-wrap">
+      <img src="/assets/plugin.png" alt="Glitch in Time VST3 plugin interface — 6 glitch modes, metafilter, bit crusher, granular delay" loading="lazy" />
+    </div>
     <p class="plugin-rank">// #1 — BEST OVERALL</p>
     <h3>Glitch in Time — Augmented Signals</h3>
     <p>The most complete free glitch plugin available in 2026. Glitch in Time packs six distinct glitch engines (Stutter, Crush, Modulator, Gater, Stretcher, Scatter) plus a resonant metafilter with auto-wah, bit crusher, granular delay, and 4-band spatial width — all in a single VST3 plugin. Every knob is automatable and MIDI-mappable. Tempo-synced down to 1/32 notes. Free, no account needed.</p>
@@ -116,6 +122,46 @@
   </div>
 
   <div class="plugin-card">
+    <div class="plugin-img-wrap">
+      <svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" style="background:#0d0a0a">
+        <rect width="800" height="260" fill="#0d0a0a"/>
+        <!-- header bar -->
+        <rect width="800" height="36" fill="#1a0d0d"/>
+        <text x="16" y="23" font-family="monospace" font-size="11" fill="#ff4422" font-weight="bold" letter-spacing="3">FRACTURE</text>
+        <text x="120" y="23" font-family="monospace" font-size="9" fill="#662200">GLITCHMACHINES</text>
+        <rect x="720" y="8" width="60" height="18" rx="2" fill="#2a0808"/>
+        <text x="750" y="20" font-family="monospace" font-size="8" fill="#ff4422" text-anchor="middle">FREE</text>
+        <!-- randomize bars scattered -->
+        <rect x="20" y="55" width="3" height="60" fill="#ff3300" opacity=".9"/>
+        <rect x="28" y="70" width="3" height="40" fill="#ff3300" opacity=".6"/>
+        <rect x="36" y="48" width="3" height="80" fill="#cc2200" opacity=".8"/>
+        <rect x="44" y="65" width="3" height="50" fill="#ff4422" opacity=".7"/>
+        <rect x="52" y="55" width="3" height="65" fill="#ff3300" opacity=".5"/>
+        <rect x="60" y="80" width="3" height="30" fill="#cc2200" opacity=".9"/>
+        <rect x="68" y="52" width="3" height="75" fill="#ff5533" opacity=".6"/>
+        <rect x="76" y="60" width="3" height="55" fill="#ff3300" opacity=".8"/>
+        <!-- knobs row -->
+        <circle cx="200" cy="130" r="28" fill="#1a0808" stroke="#ff3300" stroke-width="2"/>
+        <line x1="200" y1="130" x2="200" y2="105" stroke="#ff4422" stroke-width="2.5"/>
+        <text x="200" y="170" font-family="monospace" font-size="9" fill="#cc4422" text-anchor="middle">SCATTER</text>
+        <circle cx="290" cy="130" r="28" fill="#1a0808" stroke="#cc2200" stroke-width="2"/>
+        <line x1="290" y1="130" x2="276" y2="107" stroke="#ff3300" stroke-width="2.5"/>
+        <text x="290" y="170" font-family="monospace" font-size="9" fill="#cc4422" text-anchor="middle">REPEAT</text>
+        <circle cx="380" cy="130" r="28" fill="#1a0808" stroke="#ff3300" stroke-width="2"/>
+        <line x1="380" y1="130" x2="394" y2="107" stroke="#ff4422" stroke-width="2.5"/>
+        <text x="380" y="170" font-family="monospace" font-size="9" fill="#cc4422" text-anchor="middle">REVERSE</text>
+        <circle cx="470" cy="130" r="28" fill="#1a0808" stroke="#cc2200" stroke-width="2"/>
+        <line x1="470" y1="130" x2="460" y2="105" stroke="#ff3300" stroke-width="2.5"/>
+        <text x="470" y="170" font-family="monospace" font-size="9" fill="#cc4422" text-anchor="middle">DECAY</text>
+        <!-- chaotic signal on right -->
+        <polyline points="560,115 572,80 578,140 585,90 592,130 598,60 605,120 612,100 620,135 628,75 635,125 642,95 650,115" fill="none" stroke="#ff3300" stroke-width="1.5" opacity=".7"/>
+        <polyline points="560,135 572,160 578,120 585,150 592,110 598,170 605,130 612,145 620,115 628,155 635,125 642,145 650,135" fill="none" stroke="#cc2200" stroke-width="1.5" opacity=".5"/>
+        <!-- bottom labels -->
+        <text x="16" y="248" font-family="monospace" font-size="8" fill="#552200">BUFFER EFFECT PROCESSOR  ·  FREE  ·  VST3</text>
+        <rect x="720" y="236" width="62" height="14" rx="2" fill="#2a0808"/>
+        <text x="751" y="246" font-family="monospace" font-size="8" fill="#ff3300" text-anchor="middle">RANDOMIZE</text>
+      </svg>
+    </div>
     <p class="plugin-rank">// #2</p>
     <h3>Glitchmachines Fracture (Free Version)</h3>
     <p>Fracture is a buffer effect processor focused on looping, reversing, and stuttering audio buffers. The free version gives you a taste of Glitchmachines' signature chaotic glitch aesthetic — unpredictable, experimental, and heavy on randomization. Less musical than Glitch in Time but great for sound design and noise work.</p>
@@ -128,6 +174,41 @@
   </div>
 
   <div class="plugin-card">
+    <div class="plugin-img-wrap">
+      <svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" style="background:#0a0c14">
+        <rect width="800" height="260" fill="#0a0c14"/>
+        <rect width="800" height="36" fill="#0d1020"/>
+        <text x="16" y="23" font-family="monospace" font-size="11" fill="#4488ff" font-weight="bold" letter-spacing="3">BRRR</text>
+        <text x="88" y="23" font-family="monospace" font-size="9" fill="#223366">BABY AUDIO</text>
+        <!-- central big stutter knob -->
+        <circle cx="200" cy="140" r="55" fill="#0f1428" stroke="#2244aa" stroke-width="2"/>
+        <circle cx="200" cy="140" r="48" fill="none" stroke="#1a2d66" stroke-width="1"/>
+        <circle cx="200" cy="140" r="8" fill="#4488ff"/>
+        <line x1="200" y1="140" x2="200" y2="92" stroke="#4488ff" stroke-width="3" stroke-linecap="round"/>
+        <text x="200" y="215" font-family="monospace" font-size="10" fill="#4488ff" text-anchor="middle" letter-spacing="2">STUTTER</text>
+        <!-- rate selector buttons -->
+        <rect x="290" y="95" width="36" height="20" rx="3" fill="#0f1428" stroke="#2244aa" stroke-width="1"/>
+        <text x="308" y="109" font-family="monospace" font-size="8" fill="#4488ff" text-anchor="middle">1/4</text>
+        <rect x="290" y="120" width="36" height="20" rx="3" fill="#1a2d66" stroke="#4488ff" stroke-width="1"/>
+        <text x="308" y="134" font-family="monospace" font-size="8" fill="#88bbff" text-anchor="middle">1/8</text>
+        <rect x="290" y="145" width="36" height="20" rx="3" fill="#0f1428" stroke="#2244aa" stroke-width="1"/>
+        <text x="308" y="159" font-family="monospace" font-size="8" fill="#4488ff" text-anchor="middle">1/16</text>
+        <rect x="290" y="170" width="36" height="20" rx="3" fill="#0f1428" stroke="#2244aa" stroke-width="1"/>
+        <text x="308" y="184" font-family="monospace" font-size="8" fill="#4488ff" text-anchor="middle">1/32</text>
+        <!-- chance knob -->
+        <circle cx="420" cy="130" r="30" fill="#0f1428" stroke="#2244aa" stroke-width="2"/>
+        <line x1="420" y1="130" x2="410" y2="104" stroke="#4488ff" stroke-width="2.5"/>
+        <text x="420" y="175" font-family="monospace" font-size="9" fill="#4488ff" text-anchor="middle">CHANCE</text>
+        <!-- volume knob -->
+        <circle cx="510" cy="130" r="30" fill="#0f1428" stroke="#2244aa" stroke-width="2"/>
+        <line x1="510" y1="130" x2="524" y2="106" stroke="#4488ff" stroke-width="2.5"/>
+        <text x="510" y="175" font-family="monospace" font-size="9" fill="#4488ff" text-anchor="middle">MIX</text>
+        <!-- waveform preview -->
+        <rect x="600" y="80" width="170" height="100" rx="4" fill="#0d1020" stroke="#1a2d66"/>
+        <polyline points="610,130 625,130 625,95 640,95 640,130 655,130 655,95 670,95 670,130 685,130 685,95 700,95 700,130 715,130 715,95 730,95 730,130 745,130 760,130" fill="none" stroke="#4488ff" stroke-width="1.5" opacity=".8"/>
+        <text x="16" y="248" font-family="monospace" font-size="8" fill="#223366">STUTTER PLUGIN  ·  FREE  ·  VST3  ·  ZERO LATENCY</text>
+      </svg>
+    </div>
     <p class="plugin-rank">// #3</p>
     <h3>BRRR — Baby Audio</h3>
     <p>A simple but effective stutter plugin from Baby Audio. BRRR gives you a single stutter rate control with some randomization. Very low CPU, dead simple to use. Not as feature-rich as Glitch in Time but great for quick stutter transitions on vocals or synths without overthinking it.</p>
@@ -140,6 +221,38 @@
   </div>
 
   <div class="plugin-card">
+    <div class="plugin-img-wrap">
+      <svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" style="background:#060d10">
+        <rect width="800" height="260" fill="#060d10"/>
+        <rect width="800" height="36" fill="#08121a"/>
+        <text x="16" y="23" font-family="monospace" font-size="11" fill="#00ccaa" font-weight="bold" letter-spacing="3">HYSTERESIS</text>
+        <text x="178" y="23" font-family="monospace" font-size="9" fill="#003322">GLITCHMACHINES</text>
+        <!-- drifting delay lines / waveform trails -->
+        <polyline points="20,130 60,110 100,145 140,100 180,138 220,115 260,150 300,105 340,140 380,118 420,148 460,108 500,135" fill="none" stroke="#00ccaa" stroke-width="1.5" opacity=".5"/>
+        <polyline points="20,140 60,160 100,125 140,165 180,128 220,155 260,120 300,158 340,130 380,155 420,122 460,158 500,140" fill="none" stroke="#009977" stroke-width="1" opacity=".3"/>
+        <polyline points="20,150 60,140 100,165 140,135 180,160 220,140 260,170 300,138 340,158 380,142 420,165 460,138 500,152" fill="none" stroke="#007755" stroke-width="1" opacity=".2"/>
+        <!-- knobs -->
+        <circle cx="580" cy="100" r="24" fill="#081810" stroke="#00ccaa" stroke-width="1.5"/>
+        <line x1="580" y1="100" x2="568" y2="79" stroke="#00ccaa" stroke-width="2"/>
+        <text x="580" y="136" font-family="monospace" font-size="8" fill="#00aa88" text-anchor="middle">FEEDBACK</text>
+        <circle cx="650" cy="100" r="24" fill="#081810" stroke="#009977" stroke-width="1.5"/>
+        <line x1="650" y1="100" x2="660" y2="79" stroke="#00ccaa" stroke-width="2"/>
+        <text x="650" y="136" font-family="monospace" font-size="8" fill="#00aa88" text-anchor="middle">DRIFT</text>
+        <circle cx="720" cy="100" r="24" fill="#081810" stroke="#00ccaa" stroke-width="1.5"/>
+        <line x1="720" y1="100" x2="720" y2="76" stroke="#00ccaa" stroke-width="2"/>
+        <text x="720" y="136" font-family="monospace" font-size="8" fill="#00aa88" text-anchor="middle">TIME</text>
+        <circle cx="580" cy="190" r="24" fill="#081810" stroke="#009977" stroke-width="1.5"/>
+        <line x1="580" y1="190" x2="570" y2="168" stroke="#00ccaa" stroke-width="2"/>
+        <text x="580" y="226" font-family="monospace" font-size="8" fill="#00aa88" text-anchor="middle">SCATTER</text>
+        <circle cx="650" cy="190" r="24" fill="#081810" stroke="#00ccaa" stroke-width="1.5"/>
+        <line x1="650" y1="190" x2="665" y2="170" stroke="#00ccaa" stroke-width="2"/>
+        <text x="650" y="226" font-family="monospace" font-size="8" fill="#00aa88" text-anchor="middle">DECAY</text>
+        <circle cx="720" cy="190" r="24" fill="#081810" stroke="#009977" stroke-width="1.5"/>
+        <line x1="720" y1="190" x2="712" y2="167" stroke="#00ccaa" stroke-width="2"/>
+        <text x="720" y="226" font-family="monospace" font-size="8" fill="#00aa88" text-anchor="middle">MIX</text>
+        <text x="16" y="248" font-family="monospace" font-size="8" fill="#003322">GLITCH DELAY · FREE · AMBIENT TEXTURE GENERATOR</text>
+      </svg>
+    </div>
     <p class="plugin-rank">// #4</p>
     <h3>Hysteresis — Glitchmachines</h3>
     <p>A free delay/glitch hybrid with unpredictable buffer manipulation. Hysteresis excels at creating evolving, drifting glitch textures rather than rhythmic stutter — think ambient pads dissolving into noise, or drum hits decaying into scattered fragments. Deep sound design tool, not a beat glitch button.</p>
@@ -152,6 +265,47 @@
   </div>
 
   <div class="plugin-card">
+    <div class="plugin-img-wrap">
+      <svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" style="background:#101014">
+        <rect width="800" height="260" fill="#101014"/>
+        <rect width="800" height="36" fill="#18181e"/>
+        <text x="16" y="23" font-family="monospace" font-size="11" fill="#ddddff" font-weight="bold" letter-spacing="2">TAL-CHORUS-LX</text>
+        <text x="206" y="23" font-family="monospace" font-size="9" fill="#444455">TAL SOFTWARE  ·  FREE</text>
+        <!-- clean chorus LFO display -->
+        <rect x="20" y="55" width="340" height="90" rx="4" fill="#0a0a10" stroke="#222233"/>
+        <text x="30" y="72" font-family="monospace" font-size="8" fill="#555566">LFO</text>
+        <path d="M 30 110 Q 80 65 130 110 Q 180 155 230 110 Q 280 65 330 110 Q 350 130 360 110" fill="none" stroke="#9999dd" stroke-width="2"/>
+        <path d="M 30 110 Q 80 155 130 110 Q 180 65 230 110 Q 280 155 330 110" fill="none" stroke="#6666bb" stroke-width="1" opacity=".5"/>
+        <!-- knobs -->
+        <circle cx="430" cy="110" r="30" fill="#14141a" stroke="#8888cc" stroke-width="1.5"/>
+        <line x1="430" y1="110" x2="418" y2="84" stroke="#aaaaee" stroke-width="2.5"/>
+        <text x="430" y="155" font-family="monospace" font-size="9" fill="#8888cc" text-anchor="middle">DEPTH</text>
+        <circle cx="520" cy="110" r="30" fill="#14141a" stroke="#6666aa" stroke-width="1.5"/>
+        <line x1="520" y1="110" x2="534" y2="86" stroke="#aaaaee" stroke-width="2.5"/>
+        <text x="520" y="155" font-family="monospace" font-size="9" fill="#8888cc" text-anchor="middle">RATE</text>
+        <circle cx="610" cy="110" r="30" fill="#14141a" stroke="#8888cc" stroke-width="1.5"/>
+        <line x1="610" y1="110" x2="610" y2="80" stroke="#aaaaee" stroke-width="2.5"/>
+        <text x="610" y="155" font-family="monospace" font-size="9" fill="#8888cc" text-anchor="middle">MIX</text>
+        <!-- stereo L/R indicator -->
+        <rect x="700" y="75" width="80" height="70" rx="4" fill="#0a0a10" stroke="#222233"/>
+        <rect x="710" y="85" width="12" height="50" rx="2" fill="#222233"/>
+        <rect x="710" y="105" width="12" height="30" rx="2" fill="#6666aa"/>
+        <rect x="758" y="85" width="12" height="50" rx="2" fill="#222233"/>
+        <rect x="758" y="100" width="12" height="35" rx="2" fill="#8888cc"/>
+        <text x="716" y="145" font-family="monospace" font-size="7" fill="#555566">L</text>
+        <text x="764" y="145" font-family="monospace" font-size="7" fill="#555566">R</text>
+        <!-- bit crusher section below -->
+        <rect x="20" y="175" width="760" height="1" fill="#222233"/>
+        <text x="20" y="195" font-family="monospace" font-size="9" fill="#666677">+ SATURATOR / BIT CRUSH CHAIN</text>
+        <rect x="260" y="183" width="60" height="16" rx="3" fill="#1a1a22" stroke="#444455"/>
+        <text x="290" y="194" font-family="monospace" font-size="8" fill="#8888aa" text-anchor="middle">16-BIT</text>
+        <rect x="330" y="183" width="60" height="16" rx="3" fill="#222230" stroke="#6666aa"/>
+        <text x="360" y="194" font-family="monospace" font-size="8" fill="#aaaacc" text-anchor="middle">8-BIT</text>
+        <rect x="400" y="183" width="60" height="16" rx="3" fill="#1a1a22" stroke="#444455"/>
+        <text x="430" y="194" font-family="monospace" font-size="8" fill="#8888aa" text-anchor="middle">4-BIT</text>
+        <text x="16" y="248" font-family="monospace" font-size="8" fill="#333344">CHORUS + SATURATOR COMBO  ·  FREE  ·  LO-FI TEXTURE CHAIN</text>
+      </svg>
+    </div>
     <p class="plugin-rank">// #5</p>
     <h3>TAL-Chorus-LX + Saturator combo (Free)</h3>
     <p>Not a dedicated glitch plugin, but a practical tip: combining TAL's free chorus with aggressive bit saturation creates convincing lo-fi glitch textures at zero cost. Works inside any DAW FX chain. Requires some routing knowledge but produces unique results that dedicated glitch plugins don't.</p>
@@ -164,6 +318,41 @@
   </div>
 
   <div class="plugin-card">
+    <div class="plugin-img-wrap">
+      <svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" style="background:#0c0e0a">
+        <rect width="800" height="260" fill="#0c0e0a"/>
+        <rect width="800" height="36" fill="#121408"/>
+        <text x="16" y="23" font-family="monospace" font-size="11" fill="#88cc44" font-weight="bold" letter-spacing="2">REAPER JS PLUGINS</text>
+        <text x="238" y="23" font-family="monospace" font-size="9" fill="#334411">COCKOS  ·  BUILT-IN  ·  FREE</text>
+        <!-- code-style FX chain list -->
+        <rect x="20" y="50" width="360" height="180" rx="4" fill="#0a0c08" stroke="#223311"/>
+        <text x="30" y="70" font-family="monospace" font-size="9" fill="#334411">FX CHAIN</text>
+        <rect x="30" y="78" width="340" height="22" rx="2" fill="#141808"/>
+        <text x="40" y="93" font-family="monospace" font-size="9" fill="#88cc44">01 · JS: Stutter</text>
+        <text x="340" y="93" font-family="monospace" font-size="8" fill="#446622" text-anchor="end">ON</text>
+        <rect x="30" y="104" width="340" height="22" rx="2" fill="#0f1206"/>
+        <text x="40" y="119" font-family="monospace" font-size="9" fill="#66aa33">02 · JS: Bitcrusher</text>
+        <text x="340" y="119" font-family="monospace" font-size="8" fill="#446622" text-anchor="end">ON</text>
+        <rect x="30" y="130" width="340" height="22" rx="2" fill="#141808"/>
+        <text x="40" y="145" font-family="monospace" font-size="9" fill="#88cc44">03 · ReaPitch</text>
+        <text x="340" y="145" font-family="monospace" font-size="8" fill="#446622" text-anchor="end">ON</text>
+        <rect x="30" y="156" width="340" height="22" rx="2" fill="#0f1206"/>
+        <text x="40" y="171" font-family="monospace" font-size="9" fill="#66aa33">04 · ReaDelay</text>
+        <text x="340" y="171" font-family="monospace" font-size="8" fill="#334411" text-anchor="end">OFF</text>
+        <rect x="30" y="182" width="340" height="22" rx="2" fill="#141808"/>
+        <text x="40" y="197" font-family="monospace" font-size="9" fill="#446622">05 · JS: Gate</text>
+        <text x="340" y="197" font-family="monospace" font-size="8" fill="#334411" text-anchor="end">OFF</text>
+        <!-- param modulation panel -->
+        <rect x="400" y="50" width="380" height="180" rx="4" fill="#0a0c08" stroke="#223311"/>
+        <text x="412" y="70" font-family="monospace" font-size="9" fill="#334411">PARAM MODULATION — JS: Stutter rate</text>
+        <rect x="412" y="78" width="356" height="1" fill="#223311"/>
+        <!-- LFO waveform -->
+        <polyline points="412,130 440,95 468,165 496,95 524,165 552,95 580,165 608,95 636,165 664,95 692,130 756,130" fill="none" stroke="#88cc44" stroke-width="1.5" opacity=".7"/>
+        <line x1="412" y1="130" x2="768" y2="130" stroke="#223311" stroke-width="1"/>
+        <text x="412" y="195" font-family="monospace" font-size="8" fill="#334411">SHAPE: SQUARE  ·  SYNC: 1/8  ·  DEPTH: 100%</text>
+        <text x="16" y="248" font-family="monospace" font-size="8" fill="#223311">REAPER ONLY  ·  JS PLUGIN LIBRARY  ·  FULLY SCRIPTABLE  ·  FREE</text>
+      </svg>
+    </div>
     <p class="plugin-rank">// #6</p>
     <h3>Reaper's built-in ReaPitch + JS plugins</h3>
     <p>If you're a Reaper user, the free JS plugin library includes surprisingly capable glitch and stutter tools. Not as polished as dedicated plugins, but deeply customizable. A good option if you want to avoid installing extra VSTs.</p>
@@ -176,6 +365,64 @@
   </div>
 
   <div class="plugin-card">
+    <div class="plugin-img-wrap">
+      <svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" style="background:#111111">
+        <rect width="800" height="260" fill="#111111"/>
+        <rect width="800" height="36" fill="#161616"/>
+        <text x="16" y="23" font-family="monospace" font-size="11" fill="#ff7700" font-weight="bold" letter-spacing="2">BEAT REPEAT</text>
+        <text x="178" y="23" font-family="monospace" font-size="9" fill="#442200">ABLETON LIVE  ·  NATIVE  ·  FREE</text>
+        <!-- interval grid -->
+        <rect x="20" y="50" width="420" height="160" rx="4" fill="#0d0d0d" stroke="#2a2a2a"/>
+        <text x="30" y="68" font-family="monospace" font-size="8" fill="#444444">INTERVAL</text>
+        <text x="30" y="68" font-family="monospace" font-size="8" fill="#444444">INTERVAL</text>
+        <!-- grid steps -->
+        <rect x="30" y="75" width="44" height="30" rx="2" fill="#1a1a1a" stroke="#333333"/>
+        <text x="52" y="94" font-family="monospace" font-size="9" fill="#555555" text-anchor="middle">1</text>
+        <rect x="80" y="75" width="44" height="30" rx="2" fill="#1a1a1a" stroke="#333333"/>
+        <text x="102" y="94" font-family="monospace" font-size="9" fill="#555555" text-anchor="middle">2</text>
+        <rect x="130" y="75" width="44" height="30" rx="2" fill="#ff7700" stroke="#ff7700"/>
+        <text x="152" y="94" font-family="monospace" font-size="9" fill="#111111" text-anchor="middle">4</text>
+        <rect x="180" y="75" width="44" height="30" rx="2" fill="#1a1a1a" stroke="#333333"/>
+        <text x="202" y="94" font-family="monospace" font-size="9" fill="#555555" text-anchor="middle">8</text>
+        <rect x="230" y="75" width="44" height="30" rx="2" fill="#1a1a1a" stroke="#333333"/>
+        <text x="252" y="94" font-family="monospace" font-size="9" fill="#555555" text-anchor="middle">16</text>
+        <!-- offset + grid knobs -->
+        <text x="30" y="130" font-family="monospace" font-size="8" fill="#444444">OFFSET</text>
+        <circle cx="60" cy="155" r="20" fill="#161616" stroke="#ff7700" stroke-width="1.5"/>
+        <line x1="60" y1="155" x2="52" y2="137" stroke="#ff7700" stroke-width="2"/>
+        <text x="30" y="195" font-family="monospace" font-size="8" fill="#ff7700" text-anchor="middle">3/16</text>
+        <text x="130" y="130" font-family="monospace" font-size="8" fill="#444444">GATE</text>
+        <circle cx="160" cy="155" r="20" fill="#161616" stroke="#aa5500" stroke-width="1.5"/>
+        <line x1="160" y1="155" x2="168" y2="136" stroke="#ff7700" stroke-width="2"/>
+        <text x="130" y="195" font-family="monospace" font-size="8" fill="#aa5500" text-anchor="middle">75%</text>
+        <text x="230" y="130" font-family="monospace" font-size="8" fill="#444444">PITCH</text>
+        <circle cx="260" cy="155" r="20" fill="#161616" stroke="#aa5500" stroke-width="1.5"/>
+        <line x1="260" y1="155" x2="260" y2="135" stroke="#ff7700" stroke-width="2"/>
+        <text x="230" y="195" font-family="monospace" font-size="8" fill="#aa5500" text-anchor="middle">0 st</text>
+        <text x="330" y="130" font-family="monospace" font-size="8" fill="#444444">MIX</text>
+        <circle cx="360" cy="155" r="20" fill="#161616" stroke="#ff7700" stroke-width="1.5"/>
+        <line x1="360" y1="155" x2="372" y2="138" stroke="#ff7700" stroke-width="2"/>
+        <text x="330" y="195" font-family="monospace" font-size="8" fill="#ff7700" text-anchor="middle">100%</text>
+        <!-- chance meter -->
+        <rect x="460" y="50" width="320" height="160" rx="4" fill="#0d0d0d" stroke="#2a2a2a"/>
+        <text x="472" y="68" font-family="monospace" font-size="8" fill="#444444">CHANCE</text>
+        <rect x="472" y="75" width="288" height="16" rx="2" fill="#1a1a1a"/>
+        <rect x="472" y="75" width="200" height="16" rx="2" fill="#ff7700" opacity=".7"/>
+        <text x="616" y="87" font-family="monospace" font-size="8" fill="#442200" text-anchor="middle">69%</text>
+        <text x="472" y="112" font-family="monospace" font-size="8" fill="#444444">VARIATION</text>
+        <rect x="472" y="120" width="288" height="16" rx="2" fill="#1a1a1a"/>
+        <rect x="472" y="120" width="140" height="16" rx="2" fill="#cc5500" opacity=".6"/>
+        <!-- beat visualization -->
+        <rect x="472" y="155" width="30" height="40" rx="2" fill="#ff7700" opacity=".9"/>
+        <rect x="508" y="170" width="30" height="25" rx="2" fill="#ff7700" opacity=".5"/>
+        <rect x="544" y="160" width="30" height="35" rx="2" fill="#ff7700" opacity=".7"/>
+        <rect x="580" y="175" width="30" height="20" rx="2" fill="#cc5500" opacity=".4"/>
+        <rect x="616" y="155" width="30" height="40" rx="2" fill="#ff7700" opacity=".9"/>
+        <rect x="652" y="168" width="30" height="27" rx="2" fill="#cc5500" opacity=".5"/>
+        <rect x="688" y="163" width="30" height="32" rx="2" fill="#ff7700" opacity=".6"/>
+        <text x="16" y="248" font-family="monospace" font-size="8" fill="#2a2a2a">ABLETON LIVE ONLY  ·  NATIVE DEVICE  ·  TEMPO-SYNCED  ·  NO INSTALL</text>
+      </svg>
+    </div>
     <p class="plugin-rank">// #7</p>
     <h3>Ableton's built-in Beat Repeat</h3>
     <p>Ableton Live users already have a solid stutter and repeat tool built in. Beat Repeat does rhythmic buffer repeating with pitch control, filter, and decay — and being native, it has zero installation friction. Not as versatile as Glitch in Time, but more than enough for basic stutter and drop effects.</p>
