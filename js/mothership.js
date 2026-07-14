@@ -211,8 +211,11 @@
     const ctx = new AC();
     const master = ctx.createGain(); master.gain.value = 0;
     const comp = ctx.createDynamicsCompressor();
-    comp.threshold.value = -18; comp.ratio.value = 14; comp.knee.value = 12;
-    master.connect(comp); comp.connect(ctx.destination);
+    comp.threshold.value = -26; comp.ratio.value = 6; comp.knee.value = 8;
+    const makeup = ctx.createGain(); makeup.gain.value = 2.4;   // compressor was squashing perceived loudness
+    const limiter = ctx.createDynamicsCompressor();             // brickwall so the makeup boost can't clip
+    limiter.threshold.value = -2; limiter.ratio.value = 20; limiter.knee.value = 0; limiter.attack.value = 0.002;
+    master.connect(comp); comp.connect(makeup); makeup.connect(limiter); limiter.connect(ctx.destination);
     const live = new Set();
     const g = (v) => { const n = ctx.createGain(); n.gain.value = v; return n; };
 
@@ -310,7 +313,7 @@
       const lfoAmt = g(0.18); lfo.connect(lfoAmt); lfoAmt.connect(out.gain);
       src.connect(lp); lp.connect(out); out.connect(master);
       src.start(); lfo.start(); live.add(src); live.add(lfo);
-      out.gain.setTargetAtTime(0.55, ctx.currentTime, 1.3);
+      out.gain.setTargetAtTime(0.7, ctx.currentTime, 1.3);
       return out;
     }
 
@@ -328,7 +331,7 @@
       o.connect(bp); o2.connect(bp); bp.connect(tg); tg.connect(out);
       out.connect(master); out.connect(verb);
       [o, o2, vib, trem].forEach(n => { n.start(); live.add(n); });
-      out.gain.setTargetAtTime(0.16, ctx.currentTime, 0.5);
+      out.gain.setTargetAtTime(0.26, ctx.currentTime, 0.5);
       return out;
     }
     function noiseBuf(sec) {
@@ -373,7 +376,7 @@
     }
     return {
       ctx, master, horn, rumbleStart, shimmerStart, zap, whoosh, crack,
-      fadeIn()  { master.gain.setTargetAtTime(0.27, ctx.currentTime, 0.6); },
+      fadeIn()  { master.gain.setTargetAtTime(0.62, ctx.currentTime, 0.6); },
       fadeOut(sec) { master.gain.setTargetAtTime(0, ctx.currentTime, sec || 2.5); },
       kill(after) {
         setTimeout(() => { live.forEach(n => { try { n.stop(); } catch (e) {} }); ctx.close().catch(() => {}); },
