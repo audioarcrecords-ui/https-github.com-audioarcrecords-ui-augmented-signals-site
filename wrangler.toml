@@ -7,3 +7,11 @@ enabled = true
 
 [assets]
 directory = "."
+
+# VoidSynth AI training-data collector (see functions/api/collect-preset.js).
+# database_id below is a placeholder — replace it with the id printed by:
+#   npx wrangler d1 create voidsynth-presets
+[[d1_databases]]
+binding       = "DB"
+database_name = "voidsynth-presets"
+database_id   = "REPLACE_WITH_D1_DATABASE_ID"
