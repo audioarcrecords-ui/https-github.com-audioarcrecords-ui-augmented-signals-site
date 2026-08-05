@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#05060d">
+  <title>Augmented Signals — Glitch in Time · VoidSynth | Free VST3 Audio Plugins</title>
+  <meta name="description" content="Free boutique audio plugins for Windows. Glitch in Time — real-time glitch, stutter & texture engine (VST3 + Standalone). VoidSynth — AI-powered dual wavetable synth, coming soon.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --bg:        #05060d;
+      --bg2:       #0a0e1c;
+      --panel:     rgba(14,20,40,.72);
+      --cyan:      #00f0ff;
+      --magenta:   #ff2bd6;
+      --violet:    #8b5cff;
+      --text:      #cfe3ff;
+      --dim:       #6f86b8;
+      --line:      rgba(0,240,255,.18);
+      --glow-c:    0 0 12px rgba(0,240,255,.55);
+      --glow-m:    0 0 14px rgba(255,43,214,.5);
+      --glow-v:    0 0 12px rgba(139,92,255,.5);
+      --nav-h:     56px;
+      --side:      1.375rem;
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: "Share Tech Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; }
+    input, textarea, select { font-family: inherit; }
+
+    /* ── STARS CANVAS ── */
+    #stars {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: .8;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--side);
+      background: rgba(5,6,13,.92);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--cyan);
+      font-size: 12px;
+      letter-spacing: .13em;
+      text-shadow: var(--glow-c);
+    }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-burger {
+      width: 40px; height: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .nav-burger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--cyan);
+      transition: transform .28s ease, opacity .28s ease;
+      box-shadow: var(--glow-c);
+    }
+    .nav-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-drawer {
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      z-index: 199;
+      background: rgba(5,6,13,.97);
+      border-bottom: 1px solid var(--line);
+      padding: 1.5rem var(--side) 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: .25rem;
+      transform: translateY(-102%);
+      opacity: 0;
+      transition: transform .3s cubic-bezier(.4,0,.2,1), opacity .3s;
+      pointer-events: none;
+    }
+    .nav-drawer.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .nav-drawer a {
+      display: block;
+      padding: .85rem 0;
+      font-size: 13px;
+      letter-spacing: .15em;
+      color: var(--dim);
+      border-bottom: 1px solid rgba(0,240,255,.07);
+      transition: color .2s;
+    }
+    .nav-drawer a:last-child { border-bottom: none; }
+    .nav-drawer a:active { color: var(--cyan); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--nav-h) + 3rem) var(--side) 4rem;
+      text-align: center;
+    }
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: .2em;
+      color: var(--dim);
+      margin-bottom: 1.25rem;
+    }
+    .glitch-wrap {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+    .glitch-title {
+      font-size: clamp(2.6rem, 13.5vw, 4.5rem);
+      line-height: 1.0;
+      letter-spacing: -.01em;
+      color: var(--cyan);
+      text-shadow: var(--glow-c);
+      position: relative;
+    }
+    .glitch-title::before,
+    .glitch-title::after {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    .glitch-title::before {
+      color: var(--magenta);
+      clip-path: polygon(0 0, 100% 0, 100% 42%, 0 42%);
+      transform: translate(-3px, 0);
+      animation: glitch-top 3.5s infinite;
+    }
+    .glitch-title::after {
+      color: var(--cyan);
+      clip-path: polygon(0 58%, 100% 58%, 100% 100%, 0 100%);
+      transform: translate(3px, 0);
+      animation: glitch-bot 3.5s infinite;
+    }
+    @keyframes glitch-top {
+      0%, 88%, 100% { transform: translate(0); opacity: 1; }
+      89% { transform: translate(-5px,-1px); clip-path: polygon(0 10%, 100% 10%, 100% 40%, 0 40%); }
+      91% { transform: translate(4px, 1px); clip-path: polygon(0 20%, 100% 20%, 100% 45%, 0 45%); }
+      92% { transform: translate(-2px, 0); }
+      93% { transform: translate(0); clip-path: polygon(0 0, 100% 0, 100% 42%, 0 42%); }
+    }
+    @keyframes glitch-bot {
+      0%, 88%, 100% { transform: translate(0); opacity: 1; }
+      89% { transform: translate(5px, 1px); clip-path: polygon(0 58%, 100% 58%, 100% 78%, 0 78%); }
+      91% { transform: translate(-4px,-1px); clip-path: polygon(0 62%, 100% 62%, 100% 85%, 0 85%); }
+      92% { transform: translate(2px, 0); }
+      93% { transform: translate(0); clip-path: polygon(0 58%, 100% 58%, 100% 100%, 0 100%); }
+    }
+    .hero-sub {
+      font-size: 13px;
+      color: var(--dim);
+      line-height: 1.9;
+      margin-bottom: 2.5rem;
+    }
+    .cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      width: 100%;
+      max-width: 280px;
+    }
+    .btn {
+      display: block;
+      padding: .95rem 1.5rem;
+      font-family: inherit;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 1px;
+      transition: all .2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn-cyan {
+      background: none;
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      text-shadow: var(--glow-c);
+      box-shadow: inset 0 0 22px rgba(0,240,255,.06);
+    }
+    .btn-cyan:active {
+      background: rgba(0,240,255,.1);
+      box-shadow: inset 0 0 22px rgba(0,240,255,.12), var(--glow-c);
+    }
+    .btn-ghost {
+      background: none;
+      border: 1px solid rgba(207,227,255,.2);
+      color: var(--text);
+    }
+    .btn-ghost:active {
+      border-color: var(--magenta);
+      color: var(--magenta);
+      text-shadow: var(--glow-m);
+    }
+    .btn-magenta {
+      background: none;
+      border: 1px solid var(--magenta);
+      color: var(--magenta);
+      text-shadow: var(--glow-m);
+      box-shadow: inset 0 0 22px rgba(255,43,214,.06);
+    }
+    .btn-magenta:active { background: rgba(255,43,214,.1); }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: var(--dim);
+      font-size: 10px;
+      letter-spacing: .12em;
+      animation: hint-bob 2.2s ease-in-out infinite;
+    }
+    .scroll-hint svg { opacity: .6; }
+    @keyframes hint-bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); opacity: .7; }
+      50% { transform: translateX(-50%) translateY(5px); opacity: 1; }
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      position: relative;
+      z-index: 1;
+      padding: 5rem var(--side);
+      border-top: 1px solid var(--line);
+    }
+    .sect-num {
+      font-size: 10px;
+      letter-spacing: .16em;
+      color: var(--dim);
+      margin-bottom: .75rem;
+      display: block;
+    }
+    .sect-title {
+      font-size: clamp(1.65rem, 8vw, 2.5rem);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+    .sect-title .accent-m {
+      color: var(--magenta);
+      text-shadow: var(--glow-m);
+    }
+    .sect-title .accent-c {
+      color: var(--cyan);
+      text-shadow: var(--glow-c);
+    }
+    .sect-lead {
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: .85rem;
+      line-height: 1.7;
+    }
+    .sect-body {
+      font-size: 13px;
+      color: var(--dim);
+      line-height: 1.8;
+    }
+
+    /* ── PLUGIN IMAGE ── */
+    .plugin-scroll {
+      margin: 2rem calc(-1 * var(--side)) 2.5rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+    .plugin-scroll::-webkit-scrollbar { display: none; }
+    .plugin-img {
+      display: block;
+      width: auto;
+      height: 200px;
+      min-width: 640px;
+      object-fit: cover;
+      object-position: top left;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      filter: drop-shadow(0 0 20px rgba(0,240,255,.25));
+    }
+
+    /* ── BADGES ── */
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: 1.75rem;
+    }
+    .badge {
+      padding: 5px 10px;
+      border: 1px solid var(--line);
+      font-size: 10px;
+      letter-spacing: .12em;
+      color: var(--dim);
+    }
+    .badge-cyan { border-color: rgba(0,240,255,.4); color: var(--cyan); }
+    .badge-mag  { border-color: rgba(255,43,214,.4); color: var(--magenta); }
+    .badge-vio  { border-color: rgba(139,92,255,.4); color: var(--violet); }
+
+    /* ── FEATURE GRID ── */
+    .feat-grid {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .feat-item {
+      padding: 1.1rem 0;
+      border-bottom: 1px solid rgba(0,240,255,.08);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: .75rem;
+    }
+    .feat-dot {
+      width: 3px;
+      border-radius: 2px;
+      background: var(--cyan);
+      align-self: stretch;
+      box-shadow: 0 0 6px rgba(0,240,255,.5);
+      grid-row: span 2;
+      margin-top: 3px;
+    }
+    .feat-name {
+      font-size: 13px;
+      color: var(--text);
+      letter-spacing: .03em;
+    }
+    .feat-desc {
+      font-size: 12px;
+      color: var(--dim);
+      margin-top: .3rem;
+      line-height: 1.6;
+    }
+    /* violet dot for VoidSynth features */
+    .feat-item.vio .feat-dot { background: var(--violet); box-shadow: var(--glow-v); }
+
+    /* ── DOWNLOAD ── */
+    .dl-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .dl-title {
+      font-size: 14px;
+      color: var(--cyan);
+      text-shadow: var(--glow-c);
+      margin-bottom: .5rem;
+    }
+    .dl-title span { color: var(--dim); font-size: 12px; }
+    .dl-meta {
+      font-size: 12px;
+      color: var(--dim);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+    .changelog {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+    .changelog li {
+      display: flex;
+      gap: .6rem;
+      align-items: baseline;
+      font-size: 12px;
+      color: var(--dim);
+      line-height: 1.6;
+    }
+    .changelog-tag {
+      font-size: 9px;
+      padding: 2px 6px;
+      border: 1px solid rgba(139,92,255,.4);
+      color: var(--violet);
+      letter-spacing: .1em;
+      flex-shrink: 0;
+    }
+    .dl-note {
+      font-size: 11px;
+      color: var(--dim);
+      margin-top: 1.5rem;
+      line-height: 1.8;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(0,240,255,.08);
+    }
+    .dl-note strong { color: var(--text); }
+    .dl-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+
+    /* ── DIVIDER ── */
+    .next-divider {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 3rem var(--side);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: var(--dim);
+      font-size: 11px;
+      letter-spacing: .16em;
+    }
+    .next-divider span {
+      color: var(--cyan);
+      margin-right: .5rem;
+      text-shadow: var(--glow-c);
+    }
+
+    /* ── VOIDSYNTH SECTION ── */
+    .vs-coming {
+      display: inline-block;
+      padding: 4px 10px;
+      background: rgba(255,43,214,.08);
+      border: 1px solid rgba(255,43,214,.35);
+      color: var(--magenta);
+      font-size: 10px;
+      letter-spacing: .16em;
+      margin-bottom: 1.25rem;
+    }
+    .vs-title {
+      font-size: clamp(2rem, 10vw, 3.5rem);
+      line-height: 1.05;
+      color: var(--magenta);
+      text-shadow: var(--glow-m);
+      margin-bottom: 1.5rem;
+      letter-spacing: -.01em;
+    }
+    .vs-title .line2 {
+      color: var(--violet);
+      text-shadow: var(--glow-v);
+    }
+
+    /* ── FORMS ── */
+    .form-section {
+      position: relative;
+      z-index: 1;
+      padding: 5rem var(--side);
+      border-top: 1px solid var(--line);
+    }
+    .form-body {
+      margin-top: 2rem;
+    }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 1.5rem;
+    }
+    .field label {
+      font-size: 10px;
+      letter-spacing: .14em;
+      color: var(--dim);
+    }
+    .field input,
+    .field textarea,
+    .field select {
+      background: none;
+      border: none;
+      border-bottom: 1px solid rgba(0,240,255,.25);
+      color: var(--text);
+      font-size: 14px;
+      padding: .7rem 0;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      border-radius: 0;
+      transition: border-color .2s;
+      width: 100%;
+    }
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus { border-bottom-color: var(--cyan); }
+    .field textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    .field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236f86b8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 4px center;
+      padding-right: 1.5rem;
+    }
+    .field select option { background: #0d1428; }
+    .h-captcha { margin-bottom: 1.5rem; }
+    .form-status {
+      font-size: 12px;
+      color: var(--cyan);
+      margin-top: .75rem;
+      min-height: 1.5em;
+    }
+    .form-status.error { color: var(--magenta); }
+
+    /* ── FOOTER ── */
+    .footer {
+      position: relative;
+      z-index: 1;
+      padding: 3rem var(--side) 4rem;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    .footer-logo {
+      font-size: 12px;
+      letter-spacing: .13em;
+      color: var(--cyan);
+      text-shadow: var(--glow-c);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a {
+      font-size: 11px;
+      letter-spacing: .1em;
+      color: var(--dim);
+      transition: color .2s;
+    }
+    .footer-links a:active { color: var(--cyan); }
+    .footer-copy {
+      font-size: 11px;
+      color: rgba(111,134,184,.5);
+    }
+    .view-desktop {
+      font-size: 11px;
+      color: var(--dim);
+      letter-spacing: .1em;
+      padding: .5rem 1rem;
+      border: 1px solid rgba(0,240,255,.12);
+    }
+    .view-desktop:active { color: var(--cyan); border-color: var(--line); }
+
+    /* ── REDUCED MOTION ── */
+    @media (prefers-reduced-motion: reduce) {
+      .glitch-title::before, .glitch-title::after { animation: none; }
+      .scroll-hint { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+
+<!-- NAV -->
+<header class="nav" id="nav-bar">
+  <a href="#top" class="nav-logo" aria-label="Augmented Signals home">
+    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path d="M10 1 L19 10 L10 19 L1 10 Z" stroke="#00f0ff" stroke-width="1.5" fill="rgba(0,240,255,.06)"/>
+      <path d="M10 5 L15 10 L10 15 L5 10 Z" stroke="#00f0ff" stroke-width="1" fill="rgba(0,240,255,.12)"/>
+    </svg>
+    AUGMENTED SIGNALS
+  </a>
+  <button class="nav-burger" id="burger" aria-expanded="false" aria-controls="drawer" aria-label="Open navigation">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav class="nav-drawer" id="drawer" aria-hidden="true">
+  <a href="#showcase" class="drawer-link">GLITCH IN TIME</a>
+  <a href="#voidsynth" class="drawer-link">VOIDSYNTH</a>
+  <a href="#download" class="drawer-link">DOWNLOAD</a>
+  <a href="/blog/" class="drawer-link">BLOG</a>
+  <a href="#waitlist" class="drawer-link">WAITLIST</a>
+  <a href="#contact" class="drawer-link">CONTACT</a>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <p class="eyebrow">// BOUTIQUE AUDIO SOFTWARE</p>
+    <div class="glitch-wrap">
+      <h1 class="glitch-title" data-text="GLITCH IN TIME">GLITCH IN TIME</h1>
+    </div>
+    <p class="hero-sub">Real-time glitch, stutter &amp; texture engine<br>VST3 · Standalone · Win64</p>
+    <div class="cta-group">
+      <a href="#download" class="btn btn-cyan">↓ DOWNLOAD FREE</a>
+      <a href="#showcase" class="btn btn-ghost">SEE IT</a>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+      <svg width="14" height="20" viewBox="0 0 14 20" fill="none">
+        <rect x="1" y="1" width="12" height="18" rx="6" stroke="#6f86b8" stroke-width="1.2"/>
+        <circle cx="7" cy="6" r="1.5" fill="#6f86b8">
+          <animate attributeName="cy" values="5;11;5" dur="1.8s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0;1" dur="1.8s" repeatCount="indefinite"/>
+        </circle>
+      </svg>
+      SCROLL
+    </div>
+  </section>
+
+  <!-- SHOWCASE -->
+  <section class="section" id="showcase">
+    <span class="sect-num">01 — GLITCH IN TIME</span>
+    <div class="plugin-scroll">
+      <img
+        class="plugin-img"
+        src="https://augmentedsignals.com/assets/plugin.png"
+        alt="Glitch in Time plugin interface"
+        loading="lazy"
+      >
+    </div>
+    <h2 class="sect-title">Break the timeline.<br><span class="accent-m">Own the chaos.</span></h2>
+    <p class="sect-lead">Six glitch engines. One button. Infinite ways to wreck a beat.</p>
+    <p class="sect-body">Stutter, crush, gate, stretch, modulate, or scatter your audio in real time — tempo-synced down to 1/32 notes, fully automatable, and MIDI-mappable on every single knob. Add a resonant metafilter with an envelope-follower auto-wah, a bit-crusher that goes from clean 16-bit to gritty 1.5-bit, granular delay, and 4-band spatial width control.</p>
+    <div class="badges">
+      <span class="badge badge-cyan">FREE</span>
+      <span class="badge">VST3 + STANDALONE</span>
+      <span class="badge">WINDOWS</span>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section" id="features">
+    <span class="sect-num">02 — UNDER THE HOOD</span>
+    <h2 class="sect-title">What it <span class="accent-c">does</span></h2>
+    <div class="feat-grid">
+      <div class="feat-item">
+        <div class="feat-dot"></div>
+        <div class="feat-name">6 glitch modes</div>
+        <div class="feat-desc">Stutter · Crush · Modulator · Gater · Stretcher · Scatter</div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-dot"></div>
+        <div class="feat-name">Tempo-synced</div>
+        <div class="feat-desc">Lock the rate to 1/2 · 1/4 · 1/8 · 1/16 · 1/32</div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-dot"></div>
+        <div class="feat-name">Metafilter</div>
+        <div class="feat-desc">LP/HP/BP · LFO · envelope-follower auto-wah</div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-dot"></div>
+        <div class="feat-name">Bit crusher</div>
+        <div class="feat-desc">Clean 16-bit down to gritty ~1.5-bit</div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-dot"></div>
+        <div class="feat-name">Grain delay</div>
+        <div class="feat-desc">Granular delay — pitch, spray &amp; feedback</div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-dot"></div>
+        <div class="feat-name">Spatial bands</div>
+        <div class="feat-desc">4-band stereo-width + auto-panner</div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-dot"></div>
+        <div class="feat-name">Full automation</div>
+        <div class="feat-desc">Every knob automatable &amp; MIDI-mappable</div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-dot"></div>
+        <div class="feat-name">MIDI trigger</div>
+        <div class="feat-desc">Fire glitches &amp; play the buffer from notes</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <section class="section" id="download">
+    <span class="sect-num">03 — DOWNLOAD</span>
+    <h2 class="sect-title">Get it <span class="accent-c">free</span></h2>
+    <div class="dl-card">
+      <p class="dl-title">Glitch in Time <span>v1.1.0 — Windows installer</span></p>
+      <p class="dl-meta">VST3 + Standalone · 64-bit · ~5 MB · Windows 10/11<br>Free · No account needed · Direct download</p>
+      <ul class="changelog">
+        <li>
+          <span class="changelog-tag">UI</span>
+          Sharper contrast across all panels — inactive buttons, labels and value readouts are now clearly legible
+        </li>
+        <li>
+          <span class="changelog-tag">UI</span>
+          Per-section colour coding: violet for Spectrum/Glitch, teal for Spatial Bands, amber for Metafilter, pink for Glitch Engine
+        </li>
+        <li>
+          <span class="changelog-tag">UI</span>
+          Larger fonts throughout — knobs, section headers, mode buttons and value labels all bumped up ~1–2 pt
+        </li>
+      </ul>
+      <p class="dl-note"><strong>Unsigned installer</strong> — SmartScreen may warn on first run: More info → Run anyway. Prefer no installer? Grab the portable ZIP.</p>
+    </div>
+    <div class="dl-buttons">
+      <a href="https://augmentedsignals.com/downloads/GlitchInTime-1.1.0-Setup.exe" class="btn btn-cyan">↓ DOWNLOAD SETUP.EXE</a>
+      <a href="https://augmentedsignals.com/downloads/GlitchInTime-1.1.0-Portable.zip" class="btn btn-ghost">↓ PORTABLE ZIP (NO INSTALL)</a>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="next-divider">
+    <span>◈</span> NEXT IN THE ARSENAL
+  </div>
+
+  <!-- VOIDSYNTH -->
+  <section class="section" id="voidsynth">
+    <div class="plugin-scroll">
+      <img
+        class="plugin-img"
+        src="https://augmentedsignals.com/assets/voidsynth.png"
+        alt="VoidSynth synthesizer interface"
+        loading="lazy"
+        style="filter: drop-shadow(0 0 20px rgba(255,43,214,.22));"
+      >
+    </div>
+    <div class="vs-coming">// COMING SOON</div>
+    <h2 class="vs-title">Sculpt the void.<br><span class="line2">Command the signal.</span></h2>
+    <p class="sect-lead">Dual wavetable engines. Eleven FX modules. One synthesizer that thinks.</p>
+    <p class="sect-body">VoidSynth is a next-generation wavetable synthesizer that fuses deep sound design with AI-assisted synthesis. Two independent oscillators — each switchable between wavetable, sample, and granular modes — feed into a modulation architecture built for total control. Triple LFOs, a resonant filter with drive, and the MUTANT waveshaper let you sculpt sounds that shift and breathe. Eleven real-time FX modules, an XY pad, arpeggiator, and AURA spatial field — all routable through a visual FX chain.</p>
+    <div class="badges">
+      <span class="badge">VST3 + STANDALONE</span>
+      <span class="badge">WINDOWS</span>
+      <span class="badge badge-vio">AI-POWERED</span>
+      <span class="badge badge-mag">COMING SOON</span>
+    </div>
+  </section>
+
+  <!-- VOIDSYNTH FEATURES -->
+  <section class="section" id="vs-features">
+    <span class="sect-num">04 — WHAT'S INSIDE VOIDSYNTH</span>
+    <div class="feat-grid">
+      <div class="feat-item vio">
+        <div class="feat-dot"></div>
+        <div class="feat-name">Dual wavetable OSCs</div>
+        <div class="feat-desc">WT · sample · granular — switchable per oscillator</div>
+      </div>
+      <div class="feat-item vio">
+        <div class="feat-dot"></div>
+        <div class="feat-name">Triple LFOs</div>
+        <div class="feat-desc">Multiple shapes · tempo-sync · phase · retrigger</div>
+      </div>
+      <div class="feat-item vio">
+        <div class="feat-dot"></div>
+        <div class="feat-name">Resonant filter</div>
+        <div class="feat-desc">LP · HP · BP · drive · vowel formant shaping</div>
+      </div>
+      <div class="feat-item vio">
+        <div class="feat-dot"></div>
+        <div class="feat-name">MUTANT engine</div>
+        <div class="feat-desc">FM · waveshaping · tone · spread · chaos modulation</div>
+      </div>
+      <div class="feat-item vio">
+        <div class="feat-dot"></div>
+        <div class="feat-name">V.GRAIN — Void Grain</div>
+        <div class="feat-desc">Granular timestretch · scatter · pitch · spray</div>
+      </div>
+      <div class="feat-item vio">
+        <div class="feat-dot"></div>
+        <div class="feat-name">FREEZE engine</div>
+        <div class="feat-desc">Real-time buffer freeze with granular diffusion</div>
+      </div>
+      <div class="feat-item vio">
+        <div class="feat-dot"></div>
+        <div class="feat-name">Spectral GLITCH</div>
+        <div class="feat-desc">Stutter &amp; scatter — tempo-synced to your session</div>
+      </div>
+      <div class="feat-item vio">
+        <div class="feat-dot"></div>
+        <div class="feat-name">XY Pad modulation</div>
+        <div class="feat-desc">Two-axis live modulation mapped to any parameter</div>
+      </div>
+      <div class="feat-item vio">
+        <div class="feat-dot"></div>
+        <div class="feat-name">Arpeggiator</div>
+        <div class="feat-desc">Full-featured ARP with gate, rate &amp; pattern modes</div>
+      </div>
+      <div class="feat-item vio">
+        <div class="feat-dot"></div>
+        <div class="feat-name">AURA spatial field</div>
+        <div class="feat-desc">Spectral reverb &amp; multi-band stereo width</div>
+      </div>
+      <div class="feat-item vio">
+        <div class="feat-dot"></div>
+        <div class="feat-name">AI synthesis (Beta)</div>
+        <div class="feat-desc">Patch generation, morphing &amp; real-time suggestion engine</div>
+      </div>
+      <div class="feat-item vio">
+        <div class="feat-dot"></div>
+        <div class="feat-name">8 Macro controls</div>
+        <div class="feat-desc">Map any parameter — perform your entire patch live</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAITLIST -->
+  <section class="form-section" id="waitlist">
+    <span class="sect-num">05 — EARLY ACCESS</span>
+    <h2 class="sect-title">Join the <span class="accent-m">waitlist</span></h2>
+    <p class="sect-body">VoidSynth is in final development. Drop your email — you'll be first in line when it launches.</p>
+    <form class="form-body" id="waitlist-form" method="POST" action="https://api.web3forms.com/submit">
+      <input type="hidden" name="access_key" value="d67c8a0f-b26d-40ae-9416-ef2a5f5c5e74">
+      <input type="hidden" name="subject" value="new voidsynth waitlister">
+      <input type="hidden" name="to" value="augmentedsignals@outlook.com">
+      <div class="field">
+        <label for="wl-name">NAME</label>
+        <input type="text" id="wl-name" name="name" placeholder="Your name" autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="wl-email">EMAIL</label>
+        <input type="email" id="wl-email" name="email" placeholder="you@domain.com" autocomplete="email" required>
+      </div>
+      <div class="h-captcha" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2" data-theme="dark"></div>
+      <button type="submit" class="btn btn-magenta" style="width:100%">JOIN WAITLIST ▸</button>
+      <p class="form-status" id="wl-status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="form-section" id="contact">
+    <span class="sect-num">06 — CONTACT &amp; SUPPORT</span>
+    <h2 class="sect-title">Transmit a <span class="accent-c">signal</span></h2>
+    <p class="sect-body">Bug report, feature request, or just want to share what you made?</p>
+    <form class="form-body" id="contact-form" method="POST" action="https://api.web3forms.com/submit">
+      <input type="hidden" name="access_key" value="d67c8a0f-b26d-40ae-9416-ef2a5f5c5e74">
+      <input type="hidden" name="subject" value="New message from Augmented Signals site">
+      <input type="hidden" name="to" value="augmentedsignals@outlook.com">
+      <div class="field">
+        <label for="ct-name">NAME</label>
+        <input type="text" id="ct-name" name="name" placeholder="Your name" autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="ct-email">EMAIL</label>
+        <input type="email" id="ct-email" name="email" placeholder="you@domain.com" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="ct-topic">TOPIC</label>
+        <select id="ct-topic" name="topic">
+          <option value="Feedback">Feedback</option>
+          <option value="Bug report">Bug report</option>
+          <option value="Feature request">Feature request</option>
+          <option value="Support">Support</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="ct-msg">MESSAGE</label>
+        <textarea id="ct-msg" name="message" placeholder="Type your transmission…" required></textarea>
+      </div>
+      <div class="h-captcha" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2" data-theme="dark"></div>
+      <button type="submit" class="btn btn-cyan" style="width:100%">TRANSMIT ▸</button>
+      <p class="form-status" id="ct-status" aria-live="polite"></p>
+    </form>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <a href="#top" class="footer-logo">
+    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path d="M10 1 L19 10 L10 19 L1 10 Z" stroke="#00f0ff" stroke-width="1.5" fill="rgba(0,240,255,.06)"/>
+      <path d="M10 5 L15 10 L10 15 L5 10 Z" stroke="#00f0ff" stroke-width="1" fill="rgba(0,240,255,.12)"/>
+    </svg>
+    AUGMENTED SIGNALS
+  </a>
+  <nav class="footer-links">
+    <a href="/blog/">Blog</a>
+  </nav>
+  <a href="https://augmentedsignals.com" class="view-desktop">VIEW DESKTOP SITE</a>
+  <p class="footer-copy">© 2026 Augmented Signals</p>
+</footer>
+
+<script>
+// ── STARS ──
+(function(){
+  var canvas = document.getElementById('stars');
+  var ctx = canvas.getContext('2d');
+  var stars = [];
+  function resize(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  function init(){
+    resize();
+    stars = [];
+    var n = Math.floor((canvas.width * canvas.height) / 6000);
+    for(var i=0; i<n; i++){
+      stars.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        r: Math.random()*1.2+0.2,
+        a: Math.random(),
+        sp: Math.random()*0.004+0.001
+      });
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    stars.forEach(function(s){
+      s.a += s.sp;
+      if(s.a > 1){ s.a = 0; }
+      ctx.globalAlpha = Math.sin(s.a*Math.PI)*0.7+0.1;
+      ctx.fillStyle = '#cfe3ff';
+      ctx.beginPath();
+      ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize', init);
+  init();
+  draw();
+})();
+
+// ── NAV HAMBURGER ──
+(function(){
+  var burger = document.getElementById('burger');
+  var drawer = document.getElementById('drawer');
+  var links = drawer.querySelectorAll('a');
+  function close(){
+    burger.setAttribute('aria-expanded','false');
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden','true');
+  }
+  burger.addEventListener('click', function(){
+    var isOpen = drawer.classList.contains('open');
+    if(isOpen){ close(); }
+    else {
+      burger.setAttribute('aria-expanded','true');
+      drawer.classList.add('open');
+      drawer.setAttribute('aria-hidden','false');
+    }
+  });
+  links.forEach(function(l){ l.addEventListener('click', close); });
+  document.addEventListener('click', function(e){
+    if(!drawer.contains(e.target) && !burger.contains(e.target)){
+      close();
+    }
+  });
+})();
+
+// ── FORMS ──
+(function(){
+  function handleForm(formId, statusId){
+    var form = document.getElementById(formId);
+    var status = document.getElementById(statusId);
+    if(!form) return;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      status.textContent = 'Transmitting…';
+      status.className = 'form-status';
+      var data = new FormData(form);
+      fetch('https://api.web3forms.com/submit',{
+        method:'POST',
+        body: data
+      }).then(function(r){ return r.json(); })
+        .then(function(res){
+          if(res.success){
+            status.textContent = '✓ Transmitted.';
+            status.className = 'form-status';
+            form.reset();
+          } else {
+            status.textContent = 'Error — try again.';
+            status.className = 'form-status error';
+          }
+        }).catch(function(){
+          status.textContent = 'Error — check your connection.';
+          status.className = 'form-status error';
+        });
+    });
+  }
+  handleForm('waitlist-form','wl-status');
+  handleForm('contact-form','ct-status');
+})();
+</script>
+
+</body>
+</html>
