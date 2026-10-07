@@ -238,6 +238,10 @@ h1,h2,h3{ font-family:"Orbitron", sans-serif; letter-spacing:.04em; }
 }
 
 /* ── DOWNLOAD ────────────────────────────────────────── */
+.download-grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:24px;
+}
+@media(max-width:860px){ .download-grid{ grid-template-columns:1fr; } }
 .download-box{
   display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap;
   background:var(--panel); border:1px solid var(--line); border-radius:8px;
