@@ -91,12 +91,9 @@
 .btn-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 .tag-list{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-top:1rem}
 .tag-list span{font-family:'Share Tech Mono',monospace;font-size:.75rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:4px;padding:.25rem .6rem;color:#aaa}
-/* OS tabs */
-.os-tabs{display:flex;gap:.5rem;justify-content:center;margin-bottom:2rem}
-.os-tab{font-family:'Share Tech Mono',monospace;font-size:.85rem;padding:.45rem 1.2rem;border-radius:6px;border:1px solid rgba(255,255,255,.15);background:transparent;color:#888;cursor:pointer;transition:all .2s}
-.os-tab.active{background:rgba(124,111,255,.18);border-color:#7c6fff;color:#fff}
-.os-panel{display:none}.os-panel.active{display:block}
-.dl-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;padding:1.75rem 2rem;text-align:left;margin-bottom:1.5rem}
+.dl-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;text-align:left}
+@media(max-width:640px){.dl-grid{grid-template-columns:1fr}}
+.dl-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;padding:1.75rem 2rem;text-align:left}
 .dl-card-title{font-family:'Orbitron',sans-serif;font-size:1rem;color:#fff;margin-bottom:.35rem}
 .dl-card-meta{font-family:'Share Tech Mono',monospace;font-size:.8rem;color:#888;margin-bottom:1rem}
 .dl-card-note{font-family:'Share Tech Mono',monospace;font-size:.78rem;color:#666;margin-top:.85rem;line-height:1.6}
@@ -241,15 +238,10 @@
     <h2>Download Glitch in Time Free</h2>
     <p>v1.1.0 · VST3 + Standalone · Windows &amp; Mac · 64-bit · ~5 MB · No account needed</p>
 
-    <div class="os-tabs" role="tablist">
-      <button class="os-tab active" role="tab" aria-selected="true"  onclick="switchOS('win',this)">⊞ Windows</button>
-      <button class="os-tab"        role="tab" aria-selected="false" onclick="switchOS('mac',this)"> Mac</button>
-    </div>
-
-    <!-- Windows panel -->
-    <div class="os-panel active" id="os-win">
+    <div class="dl-grid">
+      <!-- Windows card -->
       <div class="dl-card">
-        <div class="dl-card-title">Glitch in Time v1.1.0 — Windows installer</div>
+        <div class="dl-card-title">⊞ Windows — v1.1.0</div>
         <div class="dl-card-meta">VST3 + Standalone · 64-bit · ~5 MB · Windows 10/11</div>
         <span class="ui-badge">UI</span> Sharper contrast across all panels<br/>
         <span class="ui-badge">UI</span> Per-section colour coding<br/>
@@ -260,12 +252,10 @@
         </div>
         <p class="dl-card-note">Unsigned installer — SmartScreen may warn on first run: <strong>More info → Run anyway.</strong></p>
       </div>
-    </div>
 
-    <!-- Mac panel -->
-    <div class="os-panel" id="os-mac">
+      <!-- Mac card -->
       <div class="dl-card">
-        <div class="dl-card-title">Glitch in Time v1.1.0 — Mac VST3</div>
+        <div class="dl-card-title"> Mac — v1.1.0</div>
         <div class="dl-card-meta">VST3 · Universal binary (Apple Silicon + Intel) · ~5.7 MB · macOS 13+</div>
         <span class="ui-badge">UI</span> Sharper contrast across all panels<br/>
         <span class="ui-badge">UI</span> Per-section colour coding<br/>
@@ -281,15 +271,6 @@
       </div>
     </div>
   </div>
-
-  <script>
-  function switchOS(os, btn) {
-    document.querySelectorAll('.os-tab').forEach(function(t){t.classList.remove('active');t.setAttribute('aria-selected','false');});
-    document.querySelectorAll('.os-panel').forEach(function(p){p.classList.remove('active');});
-    btn.classList.add('active'); btn.setAttribute('aria-selected','true');
-    document.getElementById('os-'+os).classList.add('active');
-  }
-  </script>
 
   <section class="section" style="text-align:center;padding:3rem 1.5rem">
     <p style="color:#666;font-family:'Share Tech Mono',monospace;font-size:.9rem;margin-bottom:1rem">Also check out our upcoming AI synthesizer</p>
