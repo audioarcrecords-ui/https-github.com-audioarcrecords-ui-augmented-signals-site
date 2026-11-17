@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Sound Design: Type a Sound, Get a Synth Patch | Augmented Signals</title>
+<meta name="description" content="AI sound design explained: how text-to-synth AI turns words like &quot;screaming acid lead&quot; into editable synth patches, and what it opens up for producers." />
+<meta name="keywords" content="AI sound design, AI synth, AI synthesizer, text to synth, AI VST plugin, AI synth plugin, AI preset generator, generate synth presets with AI, AI music production tools 2026, VoidSynth" />
+<link rel="canonical" href="https://augmentedsignals.com/blog/ai-sound-design-text-to-synth/" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Augmented Signals" />
+<meta property="og:url" content="https://augmentedsignals.com/blog/ai-sound-design-text-to-synth/" />
+<meta property="og:title" content="AI Sound Design: Type a Sound, Get a Synth Patch" />
+<meta property="og:description" content="I typed &quot;screaming acid lead&quot; and the synth built the whole patch. How AI sound design works, and the endless possibilities it opens for producers." />
+<meta property="og:image" content="https://augmentedsignals.com/assets/blog/ai-sound-design/og-ai-sound-design.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="article:published_time" content="2026-11-17" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AI Sound Design: Type a Sound, Get a Synth Patch" />
+<meta name="twitter:description" content="How text-to-synth AI turns words into fully editable patches, and what it means for music producers in 2026." />
+<meta name="twitter:image" content="https://augmentedsignals.com/assets/blog/ai-sound-design/og-ai-sound-design.jpg" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "AI Sound Design: Type a Sound, Get a Synth Patch (2026 Guide)",
+      "description": "How text-to-synth AI turns words into fully editable synth patches, what it means for producers, and how VoidSynth's built-in AI engine does it offline.",
+      "image": [
+        "https://augmentedsignals.com/assets/blog/ai-sound-design/og-ai-sound-design.jpg",
+        "https://augmentedsignals.com/assets/blog/ai-sound-design/voidsynth-ai-synth-hero.webp"
+      ],
+      "author": { "@type": "Organization", "name": "Augmented Signals", "url": "https://augmentedsignals.com" },
+      "publisher": { "@type": "Organization", "name": "Augmented Signals", "url": "https://augmentedsignals.com" },
+      "datePublished": "2026-11-17",
+      "dateModified": "2026-11-17",
+      "mainEntityOfPage": "https://augmentedsignals.com/blog/ai-sound-design-text-to-synth/",
+      "keywords": "AI sound design, AI synth, text to synth, AI VST plugin, AI preset generator"
+    },
+    {
+      "@type": "VideoObject",
+      "name": "I Typed “Screaming Acid Lead” and My Synth Built It | VoidSynth AI Engine",
+      "description": "A 4.5-minute tour of the VoidSynth AI engine: every synth sound in the video was generated from a text prompt by INSTANT, the neural network built into the plugin.",
+      "thumbnailUrl": "https://i.ytimg.com/vi/_d1pCqukqTg/maxresdefault.jpg",
+      "uploadDate": "2026-11-17T00:45:17-08:00",
+      "duration": "PT4M31S",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/_d1pCqukqTg",
+      "contentUrl": "https://www.youtube.com/watch?v=_d1pCqukqTg"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://augmentedsignals.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://augmentedsignals.com/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "AI Sound Design", "item": "https://augmentedsignals.com/blog/ai-sound-design-text-to-synth/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What is AI sound design?",
+          "acceptedAnswer": { "@type": "Answer", "text": "AI sound design uses machine learning to create or shape sounds from a description. In a synth, you type what you hear in your head, such as \"screaming acid lead\", and the AI sets the oscillators, filter, envelopes, modulation and effects to build a playable, fully editable patch." } },
+        { "@type": "Question", "name": "Does AI sound design replace sound designers?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. It removes the slow part, getting from a blank patch to a usable starting point, and leaves the creative decisions to you. You still judge the result, tweak it, lock what you like and decide where it goes in the track." } },
+        { "@type": "Question", "name": "Is a text-to-synth patch the same as AI-generated audio?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. AI music generators render finished audio you can't open up. A text-to-synth engine outputs synth parameters, so you get a normal patch that plays from your MIDI, responds to every knob and can be saved like any preset." } },
+        { "@type": "Question", "name": "Do I need an internet connection or an API key for VoidSynth's AI?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Not for INSTANT. INSTANT is a neural network that runs inside the plugin, so it generates patches offline with no API key. VoidSynth can also use Ollama (a local language model on your machine) or Groq (a cloud model that needs an API key) if you prefer." } },
+        { "@type": "Question", "name": "Can I edit the patches the AI makes?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every patch is made of the synth's own parameters, so every knob stays editable. You can also ask for nine variations with VARS, or change the patch in plain English with REFINE." } }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="preload" as="image" href="/assets/blog/ai-sound-design/voidsynth-ai-synth-hero.webp" />
+<style>
+.article-wrap{max-width:820px;margin:0 auto;padding:6rem 1.5rem 4rem}
+.article-tag{font-family:'Share Tech Mono',monospace;font-size:.75rem;color:#00e5ff;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;display:block}
+.article-wrap h1{font-family:'Orbitron',sans-serif;font-size:clamp(1.6rem,4vw,2.5rem);font-weight:900;color:#fff;line-height:1.3;margin-bottom:1.25rem}
+.article-meta{font-family:'Share Tech Mono',monospace;font-size:.8rem;color:#666;margin-bottom:2rem;display:flex;gap:1.5rem;flex-wrap:wrap}
+.article-wrap h2{font-family:'Orbitron',sans-serif;font-size:1.2rem;font-weight:700;color:#fff;margin:2.75rem 0 1rem;padding-bottom:.5rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.article-wrap h3{font-family:'Orbitron',sans-serif;font-size:1rem;font-weight:600;color:#80f0ff;margin:2rem 0 .75rem}
+.article-wrap p{font-family:'Share Tech Mono',monospace;font-size:.92rem;color:#bbb;line-height:1.85;margin-bottom:1.25rem}
+.article-wrap ul,.article-wrap ol{font-family:'Share Tech Mono',monospace;font-size:.92rem;color:#bbb;line-height:1.85;padding-left:1.5rem;margin-bottom:1.25rem}
+.article-wrap li{margin-bottom:.45rem}
+.article-wrap strong{color:#fff}
+.article-wrap a{color:#00e5ff}
+.lede{font-size:1.02rem!important;color:#ddd!important}
+.breadcrumb{font-family:'Share Tech Mono',monospace;font-size:.8rem;color:#555;margin-bottom:2rem}
+.breadcrumb a{color:#00e5ff;text-decoration:none}
+.shot{margin:2.25rem -1rem;position:relative}
+.shot img{display:block;width:100%;height:auto;border-radius:10px;border:1px solid rgba(255,122,26,.35);box-shadow:0 0 0 1px rgba(0,0,0,.6),0 18px 60px -20px rgba(255,122,26,.35),0 0 80px -30px rgba(124,111,255,.6)}
+.shot figcaption{font-family:'Share Tech Mono',monospace;font-size:.8rem;color:#8a8aa0;line-height:1.6;margin:.8rem 1rem 0;padding-left:.9rem;border-left:2px solid #ff7a1a}
+.shot figcaption b{color:#ff9a4a;font-weight:normal;letter-spacing:.06em;text-transform:uppercase;font-size:.74rem;display:block;margin-bottom:.15rem}
+.callout{background:rgba(0,229,255,.05);border-left:3px solid #00e5ff;border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:2rem 0}
+.callout p{margin:0;color:#ccc}
+.prompt{font-family:'Share Tech Mono',monospace;background:#0b0718;border:1px solid rgba(124,111,255,.55);border-radius:8px;padding:1rem 1.25rem;margin:1.5rem 0;color:#fff;font-size:.95rem}
+.prompt span{color:#ff7a1a;margin-right:.75rem}
+.toc{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:1.25rem 1.5rem;margin:0 0 2rem}
+.toc p{margin:0 0 .5rem;color:#fff;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}
+.toc ol{margin:0;font-size:.85rem}
+.toc a{text-decoration:none}
+.compare{width:100%;border-collapse:collapse;font-family:'Share Tech Mono',monospace;font-size:.82rem;margin:1.5rem 0 2rem}
+.compare th,.compare td{border:1px solid rgba(255,255,255,.1);padding:.65rem .75rem;text-align:left;vertical-align:top;color:#bbb}
+.compare th{color:#fff;background:rgba(0,229,255,.06)}
+.table-scroll{overflow-x:auto}
+.video-wrap{margin:1.5rem 0 1rem;aspect-ratio:16/9;width:100%;border-radius:10px;overflow:hidden;border:1px solid rgba(0,229,255,.3);box-shadow:0 20px 70px -25px rgba(0,229,255,.45)}
+.video-wrap iframe{width:100%;height:100%;border:0;display:block}
+.faq h3{color:#fff}
+.cta-box{background:rgba(0,229,255,.05);border:1px solid rgba(0,229,255,.2);border-radius:10px;padding:2rem;margin:3rem 0;text-align:center}
+.cta-box p{color:#ccc;margin-bottom:1.25rem}
+.related{margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.08)}
+.related h2{font-family:'Orbitron',sans-serif;font-size:1rem;color:#fff;margin-bottom:1.25rem;border:none;padding:0}
+.related-links{display:flex;gap:1rem;flex-wrap:wrap}
+.related-links a{font-family:'Share Tech Mono',monospace;font-size:.83rem;color:#00e5ff;text-decoration:none;border:1px solid rgba(0,229,255,.2);border-radius:6px;padding:.5rem 1rem}
+.related-links a:hover{border-color:#00e5ff}
+@media (max-width:640px){.shot{margin:2rem 0}.shot figcaption{margin:.7rem 0 0}}
+</style>
+</head>
+<body>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="scanlines" aria-hidden="true"></div>
+
+<header class="nav">
+  <a href="/" class="brand"><span class="brand-mark">◈</span><span class="brand-name">AUGMENTED&nbsp;SIGNALS</span></a>
+  <nav class="nav-links">
+    <a href="/voidsynth/">VoidSynth</a>
+    <a href="/glitch-in-time/">Glitch in Time</a>
+    <a href="/#download">Download</a>
+    <a href="/blog/">Blog</a>
+  </nav>
+</header>
+
+<article class="article-wrap">
+  <div class="breadcrumb"><a href="/">Home</a> / <a href="/blog/">Blog</a> / AI Sound Design</div>
+
+  <span class="article-tag">AI Sound Design</span>
+  <h1>AI Sound Design: Type a Sound, Get a Synth Patch</h1>
+  <div class="article-meta">
+    <span>By Augmented Signals</span>
+    <span><time datetime="2026-11-17">November 17, 2026</time></span>
+    <span>9 min read</span>
+  </div>
+
+  <p class="lede">I typed one line into a synthesizer: <strong>"screaming acid lead"</strong>. A second later it was playing one. Ladder filter set to scream, tube drive, glide between the notes. I hadn't touched a single knob.</p>
+  <p>That is <strong>AI sound design</strong> in 2026. Not a robot writing your song, but a synth that finally understands what you mean when you describe a sound. This guide explains how text-to-synth AI works, why it changes sound design for good, and the endless possibilities it opens up, using our own AI synth, <a href="/voidsynth/">VoidSynth</a>, as the working example.</p>
+
+  <figure class="shot">
+    <img src="/assets/blog/ai-sound-design/voidsynth-ai-synth-hero.webp" width="1600" height="900" alt="VoidSynth AI synthesizer plugin interface floating in space with glowing orange edges" fetchpriority="high" />
+    <figcaption><b>VoidSynth</b>A wavetable, sample and granular synth with an AI engine built in. Every sound on this page started as a sentence.</figcaption>
+  </figure>
+
+  <nav class="toc" aria-label="Contents">
+    <p>In this article</p>
+    <ol>
+      <li><a href="#what-is">What is AI sound design?</a></li>
+      <li><a href="#how-it-works">How text-to-synth AI works</a></li>
+      <li><a href="#demo">From prompt to patch: a real example</a></li>
+      <li><a href="#possibilities">The endless possibilities</a></li>
+      <li><a href="#landscape">AI synth plugins in 2026</a></li>
+      <li><a href="#tips">How to write prompts that sound good</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#video">Watch it in action</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="what-is">What Is AI Sound Design?</h2>
+  <p>AI sound design means using machine learning to create or shape sounds from a description instead of from scratch. For a synthesizer, that description is usually text. You type what you hear in your head, and the AI sets the oscillators, wavetables, filter, envelopes, modulation and effects to match.</p>
+  <p>The key word is <strong>patch</strong>. A good AI synth doesn't hand you a frozen audio file. It hands you a normal synth preset made of real parameters, so the sound plays from your keyboard, follows your MIDI, and every knob still works. You keep full control. The AI just removes the slowest part of the job: getting from a blank init patch to something worth tweaking.</p>
+
+  <div class="callout">
+    <p><strong>AI sound design vs AI music generation:</strong> tools that generate whole songs give you rendered audio you can't open up. A text-to-synth engine gives you an instrument. One replaces the producer; the other gives the producer a faster set of hands.</p>
+  </div>
+
+  <h2 id="how-it-works">How Text-to-Synth AI Works</h2>
+  <p>Under the hood, every text-to-synth system answers the same question: <em>which parameter values make a sound that matches these words?</em> In VoidSynth that happens in two stages.</p>
+
+  <h3>Stage 1: words to core parameters</h3>
+  <p>VoidSynth's <strong>INSTANT</strong> engine is a neural network that lives inside the plugin. It reads your prompt and maps it onto <strong>73 core parameters</strong>: oscillator waves and wavetables, filter type and cutoff, envelopes, unison and more. Because the model runs locally, there is no internet connection, no API key and no waiting on a server.</p>
+
+  <figure class="shot">
+    <img src="/assets/blog/ai-sound-design/voidsynth-instant-ai-engine.webp" width="1600" height="900" alt="VoidSynth AI engine selector with Ollama, Groq and INSTANT options, INSTANT highlighted" loading="lazy" decoding="async" />
+    <figcaption><b>Three AI engines</b>Ollama runs a language model on your own machine, Groq calls a fast cloud model, and INSTANT is the neural network inside the plugin.</figcaption>
+  </figure>
+
+  <h3>Stage 2: the intent engine reads between the lines</h3>
+  <p>Producers don't describe sounds in parameter names. They say "glitchy", "huge reverb" or "arp at 126 bpm". VoidSynth's intent layer catches those ideas and builds the parts a plain parameter model would miss:</p>
+  <ul>
+    <li><strong>"glitchy"</strong> wires up LFOs and the mod matrix</li>
+    <li><strong>"arp"</strong> programs the arpeggiator, including rate and tempo</li>
+    <li><strong>"huge reverb"</strong> or <strong>"ping pong delay"</strong> builds the effects chain</li>
+  </ul>
+  <p>The result is a complete, playable patch with modulation and FX, not just a static oscillator setting.</p>
+
+  <h2 id="demo">From Prompt to Patch: A Real Example</h2>
+  <p>Here is the exact prompt from our video:</p>
+  <div class="prompt"><span>PROMPT ›</span>screaming acid lead, bright, resonance, distorted, hard, techno</div>
+  <p>One click on GENERATE produced a ladder-style filter pushed into resonance, tube drive, and mono glide between the notes: the classic acid recipe, built from a sentence. Nothing in the patch was edited afterwards.</p>
+
+  <figure class="shot">
+    <img src="/assets/blog/ai-sound-design/voidsynth-text-prompt-acid-lead.webp" width="1600" height="900" alt="Typing the prompt screaming acid lead into the VoidSynth describe-a-sound text box" loading="lazy" decoding="async" />
+    <figcaption><b>Describe a sound</b>Type it like you'd say it to another producer. GENERATE turns the sentence into a patch.</figcaption>
+  </figure>
+
+  <figure class="shot">
+    <img src="/assets/blog/ai-sound-design/voidsynth-filter-envelope.webp" width="1600" height="900" alt="VoidSynth filter section with cutoff, resonance and drive knobs set by the AI and the main envelope below" loading="lazy" decoding="async" />
+    <figcaption><b>Every knob stays yours</b>The AI only sets values. Filter, drive, envelopes and modulation are all there to tweak.</figcaption>
+  </figure>
+
+  <h2 id="possibilities">The Endless Possibilities of AI Sound Design</h2>
+  <p>Faster presets are nice. What makes AI sound design revolutionary is what happens to your workflow once the blank page disappears.</p>
+
+  <h3>1. Nine directions from one idea</h3>
+  <p>Hit <strong>VARS</strong> and INSTANT spins up nine variations of the patch at once: brighter, darker, wider, more movement, more aggressive, minimal, complex and vintage. Click any card to audition it. It is like having a sound designer hand you a mood board of your own sound.</p>
+
+  <figure class="shot">
+    <img src="/assets/blog/ai-sound-design/voidsynth-ai-variations-vars.webp" width="1600" height="900" alt="Grid of nine AI-generated patch variations in VoidSynth labelled bright, dark, movement and aggro" loading="lazy" decoding="async" />
+    <figcaption><b>VARS</b>Nine takes on the same idea in one click. Audition, pick, keep going.</figcaption>
+  </figure>
+
+  <h3>2. Edit a sound in plain English</h3>
+  <p><strong>REFINE</strong> changes the patch you already have instead of starting over. In the video we take a glassy bell pluck and type <em>"add a fast arp at 126 bpm, ping pong delay"</em>. Same sound, brand new behavior. This is where AI sound design starts to feel like a conversation.</p>
+
+  <figure class="shot">
+    <img src="/assets/blog/ai-sound-design/voidsynth-refine-plain-english.webp" width="1600" height="900" alt="VoidSynth REFINE prompt reading add a fast arp at 126 bpm, ping pong delay" loading="lazy" decoding="async" />
+    <figcaption><b>REFINE</b>Talk to the patch. The AI changes what you asked for and leaves the rest alone.</figcaption>
+  </figure>
+
+  <h3>3. Genres you've never programmed</h3>
+  <p>Never built a dubstep wobble? A psy arp? A rave stab? You don't need the recipe anymore, just the words. In our five-prompt test, <em>heavy wobble bass</em>, <em>huge supersaw lead</em>, <em>aggressive distorted saw lead</em>, <em>hypnotic psy arp</em> and <em>huge rave stab</em> each became a usable sound with zero tweaking. That turns genre exploration from a weekend tutorial into a few seconds of typing.</p>
+
+  <h3>4. Sounds that don't have a name yet</h3>
+  <p>Combine words nobody puts together: "glassy, broken, warm, underwater". A human designer would rarely try that parameter combination. An AI will, and some of the most interesting timbres come from exactly those collisions. VoidSynth's wavetable, sample and granular engines give the AI a wide palette to collide them on.</p>
+
+  <figure class="shot">
+    <img src="/assets/blog/ai-sound-design/voidsynth-wavetable-oscillators.webp" width="1600" height="900" alt="VoidSynth wavetable oscillators A and B showing 3D wavetable displays with morph controls" loading="lazy" decoding="async" />
+    <figcaption><b>Wavetable oscillators</b>Two morphing wavetable oscillators give the AI a huge range of tones to choose from.</figcaption>
+  </figure>
+
+  <h3>5. Control stays with you</h3>
+  <p>The fear with AI tools is losing the wheel. VoidSynth goes the other way. <strong>Lock</strong> any section and the AI leaves it untouched. <strong>Lock the seed</strong> to repeat a result, or roll a new one. Stuck for words? <strong>RANDOM</strong> writes a prompt for you, and the <strong>18 mood tags</strong> stack right on top.</p>
+
+  <figure class="shot">
+    <img src="/assets/blog/ai-sound-design/voidsynth-lock-sections-mood-tags.webp" width="1600" height="900" alt="VoidSynth lock sections panel and mood tags such as dark, warm, bright, heavy, ethereal and glitchy" loading="lazy" decoding="async" />
+    <figcaption><b>Locks and mood tags</b>Keep the oscillator you love, let the AI redesign the rest. Tags like dark, ethereal or glitchy steer it.</figcaption>
+  </figure>
+
+  <h3>6. Sounds that evolve with your track</h3>
+  <p>Drop four variations into the <strong>VAR SEQUENCER</strong>, hit play, and VoidSynth morphs from one patch to the next right on the bar. That is a performance tool no preset browser can match: your sound designs itself in time with the music.</p>
+
+  <figure class="shot">
+    <img src="/assets/blog/ai-sound-design/voidsynth-void-core.webp" width="1600" height="900" alt="Glowing cracked violet and orange sphere, the VoidSynth void core visual" loading="lazy" decoding="async" />
+    <figcaption><b>The void core</b>Built for producers who want to explore, not scroll through presets.</figcaption>
+  </figure>
+
+  <h2 id="landscape">AI Synth Plugins in 2026: Where Text-to-Synth Stands</h2>
+  <p>Text-to-patch is one of the fastest-moving ideas in music software right now. A few approaches you'll see:</p>
+  <div class="table-scroll">
+  <table class="compare">
+    <thead><tr><th>Approach</th><th>Example</th><th>What you get</th></tr></thead>
+    <tbody>
+      <tr><td>Prompt add-on for an existing synth</td><td>Sonic Charge PhenoType for Synplant 2 (<a href="https://www.kvraudio.com/news/sonic-charge-releases-phenotype---free-text-to-patch-generator-for-synplant-2-67348" rel="noopener" target="_blank">KVR</a>)</td><td>Editable patches for one synth engine</td></tr>
+      <tr><td>Web or cloud text-to-synth</td><td>Fadr SynthGPT, SynthPilot</td><td>Generated sounds, often with an online step or subscription</td></tr>
+      <tr><td>LLM co-pilot writing presets</td><td>Language models driving existing plugins</td><td>Flexible, but needs a model and an API</td></tr>
+      <tr><td>AI engine built into the synth</td><td><a href="/voidsynth/">VoidSynth</a> INSTANT</td><td>Offline generation, intent-aware modulation and FX, VARS, REFINE, locks and morphing</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Whichever you try, judge them the same way: does the patch sound good straight away, can you edit everything, and does it fit how you already work?</p>
+
+  <h2 id="tips">How to Write Prompts That Sound Good</h2>
+  <ol>
+    <li><strong>Start with the role.</strong> "bass", "lead", "pad", "pluck", "arp" or "stab" tells the AI what job the sound has in the mix.</li>
+    <li><strong>Add character words.</strong> bright, dark, warm, gritty, glassy, wide, hollow.</li>
+    <li><strong>Name the movement.</strong> "1/8 lfo", "slow evolving", "fast arp at 126 bpm".</li>
+    <li><strong>Name the space and FX.</strong> "huge reverb", "ping pong delay", "distorted".</li>
+    <li><strong>Add the genre last.</strong> techno, dubstep, trance, psytrance. It nudges everything else.</li>
+    <li><strong>Iterate, don't retype.</strong> Use VARS for options and REFINE for changes instead of starting over.</li>
+  </ol>
+  <div class="prompt"><span>TRY ›</span>huge supersaw lead, wide, detuned unison, trance, bright</div>
+
+  <h2 id="faq" class="faq">AI Sound Design FAQ</h2>
+  <div class="faq">
+    <h3>What is AI sound design?</h3>
+    <p>Using machine learning to create or shape sounds from a description. In a synth, you type what you hear in your head and the AI sets the oscillators, filter, envelopes, modulation and effects to build a playable, editable patch.</p>
+    <h3>Does AI sound design replace sound designers?</h3>
+    <p>No. It removes the slow part, getting from a blank patch to a usable starting point. You still judge the result, tweak it and decide where it lives in the track.</p>
+    <h3>Is a text-to-synth patch the same as AI-generated audio?</h3>
+    <p>No. AI music generators render finished audio. A text-to-synth engine outputs synth parameters, so you get a normal patch that plays from your MIDI and responds to every knob.</p>
+    <h3>Do I need internet or an API key for VoidSynth's AI?</h3>
+    <p>Not for INSTANT, which runs inside the plugin. Ollama (local) and Groq (cloud, API key required) are optional extra engines.</p>
+    <h3>Can I edit the patches the AI makes?</h3>
+    <p>Yes, every parameter. You can also ask for nine variations with VARS or change the patch in plain English with REFINE.</p>
+  </div>
+
+  <h2 id="video">Watch AI Sound Design in Action</h2>
+  <p>Every synth sound in this 4.5-minute video was generated on screen by INSTANT from a text prompt, from the screaming acid lead to the five-prompt rapid fire and the var sequencer morph. No patch was edited by hand.</p>
+  <div class="video-wrap">
+    <iframe src="https://www.youtube-nocookie.com/embed/_d1pCqukqTg?rel=0" title="I Typed Screaming Acid Lead and My Synth Built It | VoidSynth AI Engine" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+  <div class="cta-box">
+    <h2 style="font-family:'Orbitron',sans-serif;color:#fff;margin-bottom:.75rem;border:none;padding:0">Describe it. Generate it. Play it.</h2>
+    <p>VoidSynth is our AI-powered wavetable, sample and granular synthesizer. Join the waitlist for early access and launch pricing.</p>
+    <a href="/voidsynth/" class="btn btn-primary">→ Explore VoidSynth &amp; Join the Waitlist</a>
+  </div>
+
+  <div class="related">
+    <h2>Related Articles</h2>
+    <div class="related-links">
+      <a href="/blog/ai-synthesis-music-production-guide/">What Is AI Synthesis?</a>
+      <a href="/blog/best-free-glitch-vst-plugins-2026/">Best Free Glitch Plugins 2026</a>
+      <a href="/glitch-in-time/">Download Glitch in Time Free</a>
+    </div>
+  </div>
+</article>
+
+<footer style="text-align:center;padding:3rem 1.5rem 2rem;border-top:1px solid rgba(255,255,255,.06)">
+  <a href="/" class="brand" style="justify-content:center;margin-bottom:1.5rem;display:flex"><span class="brand-mark">◈</span><span class="brand-name">AUGMENTED&nbsp;SIGNALS</span></a>
+  <p style="color:#444;font-family:'Share Tech Mono',monospace;font-size:.75rem">© 2026 Augmented Signals</p>
+</footer>
+<script src="/js/main.js"></script>
+</body>
+</html>
